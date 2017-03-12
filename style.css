@@ -1,0 +1,782 @@
+/*
+Theme Name: vb
+Theme URI: http://montera34.com
+Description: Tema desarrollado para el blog voragine.net.
+Version: 0.1
+Author: montera34
+Author URI: http://montera34.com
+Tags: HTML5, CSS3, fixed width, 1 col
+
+	vb v0.1
+	 http://montera34.com
+
+	This theme was designed and built by montera34,
+	whose blog you will find at http://montera34.com/
+
+	The CSS, XHTML and design is released under GPL:
+	http://www.opensource.org/licenses/gpl-license.php
+
+*/
+
+/* reseting styles */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big,
+cite, code, del, dfn, em, font, img,
+ins, kbd, q, s, samp, small, strike,
+strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+center, u, b, i {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-weight: normal;
+font-style: normal;
+font-size: 100%;
+font-family: inherit;
+vertical-align: baseline;
+}
+body {
+line-height: 1em;
+}
+:focus {
+outline: 0;
+}
+ol, ul {
+list-style: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+content: "";
+}
+blockquote, q {
+quotes: "" "";
+}
+input, textarea {
+margin: 0;
+padding: 0;
+}
+hr {
+margin: 0;
+padding: 0;
+border: 0;
+color: #000;
+background-color: #000;
+height: 1px;
+}
+
+/* redefinitions, basic styles */
+hr {display: none;}
+
+strong,
+strong a {
+	font-weight: bold;
+}
+small {font-size: 0.9em;}
+em,
+em a {
+	font-style: italic;
+}
+pre,
+code {font-family: "courier new", monospace;}
+
+strong em,
+em strong {
+	font-weight: bold;
+	font-style: italic;
+}
+strong pre,
+strong code {
+	font-weight: bold;
+	font-family: "courier new", monospace;
+}
+
+p {margin-bottom: 1em;}
+blockquote {
+	padding-left: 30px;	
+}
+blockquote p:before {
+	content: "«";
+}
+blockquote p:after {
+	content: "»";
+}
+address {
+	display: inline-block;
+}
+
+.alignleft {
+	float: left;
+	margin-right: 10px;
+}
+.alignright {
+	float: right;
+	margin-left: 10px;
+}
+.aligncenter {
+	display: block;
+	margin: 1em auto;
+	text-align: center;
+}
+.linelist li {
+	display: inline-block;
+	margin-right: 10px;
+}
+ul.editedlist,
+.art-text ul,
+.comment-text ul {
+	list-style-type: none;
+	margin-bottom: 1em;
+}
+ol.editedlist,
+.art-text ol,
+.comment-text ol {
+	margin-bottom: 1em;
+	list-style: decimal inside;
+}
+.editedlist li,
+.art-related li,
+.art-text ul li,
+.art-text ol li,
+.comment-text ul li,
+.comment-text ol li {
+	margin-left: 13px;
+}
+.editedlist li:before,
+.art-related li:before,
+.art-text ul li:before,
+.comment-text ul li:before {
+	content: "+";
+	padding-right: 5px;
+	margin-left: -13px;
+}
+.hide-text {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	display: inline-block;
+}
+
+/* links */
+a:link {
+	/*color: #00f;*/
+	color: #000;
+	text-decoration: underline;
+}
+a:visited {
+	/*color: #f0f;*/
+	color: #aaa;
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+
+
+.col2 {
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	-webkit-column-gap: 0;
+	-moz-column-gap: 0;
+}
+.col3 {
+	-webkit-column-count: 3;
+	-moz-column-count: 3;
+	-webkit-column-gap: 0;
+	-moz-column-gap: 0;
+}
+
+.col4 {
+	-webkit-column-count: 4;
+	-moz-column-count: 4;
+	-webkit-column-gap: 0;
+	-moz-column-gap: 0;
+}
+
+/* headers */
+.art-text h2 {
+	margin: 1.4em 0 1em 0;
+	/*font: 700 1.2em/1.4em 'Open Sans Condensed',sans-serif;*/
+	font: 100 1.2em/1.4em 'Libre Franklin',sans-serif;
+	text-transform: uppercase;
+}
+.art-text h3 {
+	margin: 1.2em 0 1em 0;
+	/*font: 700 1em/1.2em 'Open Sans Condensed',sans-serif;*/
+	font: 100 1em/1.2em 'Libre Franklin',sans-serif;
+	text-transform: uppercase;
+}
+.format-aside h2 {
+	margin-top: 1.4em;
+	/*font: 700 1.4em/1.6em Helvetica,Arial,sans-serif;*/
+	font: 700 1.4em/1.6em 'Libre Franklin',Helvetica,Arial,sans-serif;
+	text-transform: uppercase;
+}
+
+/* general structure */
+body {
+	background-color: #fff;
+	color: #000;
+	/*font-family: helvetica, arial, sans-serif;
+	font-size: 62.5%;*/
+	/*font: normal normal normal 62.5%/1em Helvetica,Arial,sans-serif;*/
+	font: normal normal normal 62.5%/1em 'Merriweather',Helvetica,Arial,sans-serif;
+	text-align: left;
+}
+
+#ante,#pre, #content {
+	width: 500px;
+	margin: 0 auto;
+	position: relative;
+}
+#pre {
+	padding: 2em 0;
+	/*border-top: 10px solid #000;*/
+}
+#banner {
+	margin: 0 0 1em 0;
+}
+#epi {
+	width: 500px;
+	margin: 10em auto 2em;
+	position: relative;
+	border-top: 1px solid #000;
+}
+#ante {
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+        height: 21px;
+	color: #bbb;
+}
+#ante .first {
+	display: inline-block;
+	line-height: 21px;
+	height: 21px;
+	text-transform: uppercase;
+	/*font: normal normal normal 1em/1em 'Open Sans Condensed',Helvetica,Arial,sans-serif;	*/
+	font: normal normal normal 1em/1em 'Libre Franklin',Helvetica,Arial,sans-serif;
+	width: 240px;
+}
+#ante .last {
+	display: inline-block;
+	margin-left: 4px;
+	/*font: normal normal normal 1.4em/1.6em Helvetica,Arial,sans-serif;*/
+	font: normal normal normal 1.4em/1.6em 'Libre Franklin',Helvetica,Arial,sans-serif;	
+	width: 250px;
+	text-align: right;
+}
+#ante a:link,
+#ante a:visited {
+	text-decoration: none;
+}
+
+.logo {
+	float: left;
+	margin: 5px 5px 0 0;
+}
+#blogname {
+	/*font: 700 3.6em/1em 'Open Sans Condensed',sans-serif;*/
+	font: 100 2em/1em 'Libre Franklin',sans-serif;
+	text-transform: uppercase;
+}
+#blogname a {
+	text-decoration: none;
+}
+#blogdesc {
+	/*font: 300 1.4em/1.6em 'Open Sans Condensed',sans-serif;*/
+	font: 300 1.1em/1.6em 'Libre Franklin',sans-serif;
+	text-transform: uppercase;
+	/*color: #bbb;*/
+}
+.vb-parts-desc {
+	/*font: 300 3em/1em 'Open Sans Condensed',sans-serif;*/
+	font: 100 2em/1em 'Libre Franklin',sans-serif;
+	text-transform: uppercase;
+}
+.art-date,
+.art-meta,
+.art-text {
+	font: 300 1.4em/1.6em 'Merriweather',Helvetica,Arial,sans-serif;
+}
+.art-text strong {
+	font-weight: 700;
+}
+.art-date a {
+	color: #bbb;
+}
+.art-publisher {
+	display: inline-block;
+}
+.art-publisher img {
+	height: 1em;
+	width: auto;
+}
+.one-thumb {
+	margin-left: 110px;
+	min-height: 90px;
+}
+.thumbs img {
+	border: 3px solid #fff;
+	padding: 2px;
+}
+#epi {
+	font: 100 1.1em/1.5em 'Libre Franklin',Helvetica,Arial,sans-serif;
+}
+#pre-nav {
+	margin-top: 1em;
+	/*font-family: 'Open Sans Condensed',sans-serif;*/
+	font-family: 'Libre Franklin',sans-serif;
+}
+/*.current-s:before,
+.current-cat:before {
+	padding: 3px 5px;
+	content: "+";
+	width: 10px;
+	margin-right: 1px;
+	font-weight: bold;
+}*/
+.single .art-meta {
+	border-bottom: none;
+	padding: 0;
+	margin-top: 5em;
+}
+.art-share ul {
+	display: inline-block;
+	padding: 5px 0;
+}
+.art-context:before {
+	/*content: "+ ";
+	font-weight: bold;*/
+}
+
+#busca {
+	margin-top: 2px;
+}
+#busca form {
+	position: relative;
+	display: inline;
+	width: 150px;
+}
+#busca input[type="text"] {
+	border: 1px solid transparent;
+	border-bottom: 1px solid #000;
+	height: 18px;
+	/*padding: 0 3px;*/
+	/*font: bold 1em/1.4em 'Open Sans Condensed',Helvetica,Arial,sans-serif;*/
+	font: 100 1em/1.4em 'Libre Franklin',Helvetica,Arial,sans-serif;
+	background: #fff;
+	position: relative;
+	width: 150px;
+	text-indent: 150px;
+	display: block;
+	top: -19px;
+}
+#busca input[type="text"]:focus {
+	text-indent: 0;
+	z-index: 1;
+}
+#busca label {
+	display: inline-block;
+	left: 0;
+	min-width: 60px;
+	padding: 2px 5px;
+	position: relative;
+	/*font: bold 1em/1.4em 'Open Sans Condensed',sans-serif;*/
+	font: 100 1em/1.4em 'Libre Franklin',sans-serif;
+	z-index: 1;
+	text-transform: uppercase;
+}
+#busca .query-s {
+	font: 100 1em/1.4em 'Libre Franklin',sans-serif;
+	display: inline;
+	text-transform: uppercase;
+	position: relative;
+	top: -34px;
+	left: 160px;
+}
+
+/* navigation bar */
+#navega {
+	margin-top: 5em;
+	font-family: 'Libre Franklin';
+}
+.page-numbers {
+	display: inline;
+}
+.page-numbers .current {
+	background-color: #000;
+	color: #fff;
+}
+#pre-nav li,
+.page-numbers li,
+.vb-parts li {
+	line-height: 2.1em;
+	text-transform: uppercase;
+}
+.page-numbers li {
+	display: inline;
+}
+.page-numbers li a {
+	margin-right: 4px;
+}
+.page-numbers li span {
+	padding: 3px 5px;
+}
+
+.nav-counter {
+	text-transform: uppercase;
+	display: inline;
+	border-bottom: 1px solid #000
+}
+
+.vb-parts {
+	margin-bottom: 3em;
+	font-size: 1.2em;
+}
+.vb-parts li {
+	display: inline-block;
+}
+#pre-nav li a,
+.vb-parts li a,
+.page-numbers li a,
+.art-more a {
+	padding: 3px 5px;
+	color: #000;
+	text-decoration: none;
+	/*font-family: 'Open Sans Condensed';*/
+	font-family: 'Libre Franklin';
+}
+
+
+.home .format-link .art-tit,
+.home .format-aside .art-tit,
+.category .format-link .art-tit,
+.category .format-aside .art-tit,
+.archive .format-link .art-tit,
+.archive .format-aside .art-tit {
+	display: none;
+}
+h1.art-tit {
+	font: 100 3em/1.1em 'Libre Franklin',sans-serif;
+	text-transform: uppercase;
+}
+
+h2.art-tit {
+	/*font: bold 3em/1em 'Open Sans Condensed',sans-serif;*/
+	font: 100 2em/1.3em 'Libre Franklin',sans-serif;
+	text-transform: uppercase;
+}
+.link-tit {
+	/*font: bold 1.4em/1.6em sans-serif;*/
+	font: 100 1.4em/1.4em 'Libre Franklin',sans-serif;
+}
+.error-tit {
+	/*font: bold 7.8em/1.4em 'Open Sans Condensed',sans-serif;*/
+	font: 100 7.8em/1.4em 'Libre Franklin',sans-serif;
+	text-transform: uppercase;
+}
+.art-tit a:link,
+.link-tit a:link,
+.art-tit a:visited,
+.link-tit a:visited {
+	color: #000;
+	text-decoration: none;
+	/*font-weight: bold;*/
+}
+.art-date {
+	color: #bbb;
+}
+.hentry.type-link a {
+	text-decoration: none;
+}
+.hentry.type-link .tags a {
+	font-weight: bold;
+}
+.art-meta {
+	color: #aaa;
+}
+.art-meta-tit {
+	font: 100 0.9em/1em 'Libre Franklin';
+	text-transform: uppercase;
+	color: #000;
+}
+
+.art-meta a:link,
+.art-meta a:visited {
+	color: #aaa;
+	text-decoration: none;
+}
+.art-meta strong a {
+	font-weight: bold;
+}
+
+.hentry {
+	position: relative;
+	margin-bottom: 10em;
+}
+.hentry.type-link {
+	margin-bottom: 3.2em !important;
+}
+.hentry hr {
+	width: 50px;
+	display: block;
+	margin: 2em 0 1em;
+}
+/*.fb-like {
+        position: absolute !important;
+        left: 130px;
+        top: 5px;
+}*/
+.art-text {
+	margin: 1em 0;
+}
+.art-more {
+	padding-top: 10px;
+}
+.art-more a {
+	border-top: 1px solid #000;
+}
+.wp-caption {
+	margin-bottom: 2em;
+}
+.wp-caption-text {
+	font: normal 0.9em/1.2em sans-serif;
+	color: #aaa;
+}
+
+
+#epi {
+	clear: both;
+}
+.epi-col {
+	width: 31%;
+	padding: 10px 1% 10px;
+	display: inline-block;
+	vertical-align: top;
+}
+.epi-col2 {
+	width: 61%;
+	padding: 10px 1% 10px;
+	display: inline-block;
+	vertical-align: top;
+}
+.epi-col3 {
+	width: 98%;
+	padding: 10px 1%;
+	display: inline-block;
+	vertical-align: top;
+}
+#epi .linelist {
+	margin-bottom: 1em;
+}
+#epi h2,
+#skotperez a {
+	/*font: bold 1em/1.6em 'Open Sans Condensed',sans-serif;*/
+	text-transform: uppercase;
+	text-decoration: none;
+}
+#epi a:link,
+#epi a:visited {
+	color: #000;
+}
+.epi-col a {
+	text-decoration: none;
+}
+/*#epi ul li {
+	margin: 0 2px;
+}
+#epi ul li:before {
+	content: " + ";
+	font: bold;
+}
+*/
+
+/* comments list */
+#comments,
+#pingbacks {
+	width: 500px;
+	margin-top: 5em;
+	border-top: 1px solid #000;
+}
+.comments-tit {
+	/*font: bold 1.4em/1.6em Helvetica, Arial, sans-serif;*/
+	font: 100 1.4em/1.6em 'Libre Franklin',Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+}
+.pings-tit {
+	/*font: bold 1.4em/1.6em Helvetica, Arial, sans-serif;*/
+	font: 100 1.4em/1.6em 'Libre Franklin',Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+}
+.comments-list {
+	width: 500px;
+	margin: 2em 0;
+}
+.comments-list .depth-1 {
+	margin: 6em 0 0 0;
+}
+.comments-list .depth-3 #reply-bt {
+	display: none;
+}
+.pings-list .depth-1 {
+	margin: 1em 0;
+}
+
+ol.children {
+	margin-left: 25px;
+	margin-bottom: 2em;
+}
+ol.children li.comment {
+	/*border-left: 1px dotted #000;
+	padding-left: 5px;*/
+	margin-top: 1em;
+}
+.pingback {
+	/*font: normal 1.4em/1.6em Helvetica, Arial, sans-serif;*/
+	font: 100 1.4em/1.6em 'Libre Franklin',Helvetica, Arial, sans-serif;
+}
+.comment-meta {
+	color: #bbb;
+	font: normal 13px/23px 'Merriweather',Helvetica, Arial, sans-serif;
+	/*margin-left: 78px;*/
+}
+#cancel-comment-reply {
+	font: normal 13px/23px 'Merriweather',Helvetica, Arial, sans-serif;
+	float: right;
+	margin-top: 10px;
+}
+#cancel-comment-reply a {
+	text-decoration: none;
+}
+.comment-meta li {
+	display: inline-block;
+}
+.ping-tit:before {
+	content: " + ";
+	font-weight: bold;
+}
+.comment-avatar {
+	float: left;
+}
+img.avatar {
+	margin-top: 5px;
+}
+.comment-meta .url {
+	text-decoration: none;
+	font-weight: bold;
+}
+.comment-date {
+}
+.comment-text,
+.nocomments {
+	/*margin-left: 78px;*/
+	/*font: normal 1.4em/1.6em Helvetica,Arial,sans-serif;*/
+	font: normal 13px/23px 'Merriweather',Helvetica, Arial, sans-serif;
+}
+.nocomments {
+	color: #bbb;
+}
+#reply-title {
+	padding: 5px;
+	font: 100 1.2em/1em 'Libre Franklin';
+	text-transform: uppercase;
+	color: #fff;
+	background-color: #000;
+	display: inline-block;
+}
+#reply-title a {
+	color: #fff;
+}
+/* comment form */
+#commentform {
+}
+#commentform fieldset {
+	position: relative;
+	margin: 0 0 1em 0;
+}
+#commentform label {
+	/*position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 1;
+	display: none;
+	background: #eee;*/
+	color: #bbb;
+	display: inline-block;
+	left: 6px;
+	min-width: 60px;
+	padding: 4px 10px;
+	position: relative;
+	top: 22px;
+	z-index: 1;
+	text-transform: uppercase;
+	font: 100 1em/1.4em 'Libre Franklin',sans-serif;
+}
+#commentform input[type="text"],
+#commentform textarea {
+	background: #fff;
+	position: relative;
+	padding: 10px;
+	text-indent: 150px;
+	width: 478px;
+	border: 1px solid #ddd;
+	margin-top: -10px;
+	font: 100 1.4em/1.6em 'Libre Franklin',Helvetica, Arial, sans-serif;
+}
+#commentform input[type="text"]:focus,
+#commentform textarea:focus {
+	text-indent: 0;
+	z-index: 1;
+}
+#commentform input[type="submit"]:hover {
+	cursor: pointer;
+}
+#commentform fieldset .req {
+	/*color: #bd3500;*/
+	font-size: 2.2em;
+	font-weight: bold;
+	right: 20px;
+	position: absolute;
+	top: 29px;
+	z-index: 1;
+}
+#commentform .comment-boton {
+	background-color: #bbb;
+	color: white;
+	border: none;
+	padding: 3px 5px;
+	font: 100 1.4em/1.6em 'Libre Franklin',Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+}
+
+/* social share buttons */
+.vb-bt a,
+.art-social-bt {
+	width: 21px;
+	height: 21px;
+	text-align: center;
+	font-family: 'Open Sans Condensed';
+}
+.vb-bt a:link,
+.vb-bt a:visited,
+.art-social-bt a:link,
+.art-social-bt a:visited {
+	font-weight: bold;
+	display: block;
+	text-decoration: none;
+}
+.vb-bt a:link,
+.vb-bt a:visited {
+	background-color: #bbb;
+	color: #fff;
+}
+
+@media (max-width: 499px) {
+	#ante, #pre, #content, #epi { width: 99%; }
+	img { max-width: 100%; }
+}
