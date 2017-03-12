@@ -20,7 +20,6 @@ function vb_theme_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'vb' ),
-		'lang' => esc_html__( 'Languages', 'vb' ),
 		'secondary' => esc_html__( 'Secondary', 'vb' ),
 	) );
 

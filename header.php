@@ -159,18 +159,6 @@ wp_head(); ?>
 				echo '</nav>';
 			}
 
-			$location = "lang";
-			if ( has_nav_menu( $location ) ) {
-				$args = array(
-					'theme_location'  => $location,
-					'container' => false,
-					'menu_id' => 'lang',
-					'menu_class' => 'vb-lang'
-				);
-			//	echo '<nav>';
-			//	wp_nav_menu( $args );
-			//	echo '</nav>';
-			}
 			if ( is_page_template("page.link.php") || get_post_type() == 'link' ) {
 				echo '<h1 class="vb-parts-desc">Linkoteca: Archivo de navegación</h1>';
 			} else {
