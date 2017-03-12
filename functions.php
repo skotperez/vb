@@ -16,6 +16,14 @@ function vb_theme_setup() {
 
 	// custom post type
 	add_action( 'init', 'vb_create_post_type', 0 );
+
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menus( array(
+		'primary' => esc_html__( 'Primary', 'vb' ),
+		'lang' => esc_html__( 'Languages', 'vb' ),
+		'secondary' => esc_html__( 'Secondary', 'vb' ),
+	) );
+
 }
 
 // load js scripts in the site

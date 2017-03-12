@@ -24,13 +24,18 @@ a:hover,
 	color: <?php echo "#$hover_color" ?>;
 }
 
+.vb-parts .current-menu-item,
+.vb-parts .current-menu-item a,
 .current-s a,
 .current-cat a,
+#pre-nav .current-menu-item a,
 #pre-nav li a:hover,
-.vb-parts li a:hover,
+.vb-lang a:hover,
+.vb-lang .current-lang a,
+.vb-parts li:hover,
+.vb-parts li:hover a,
 .page-numbers li a:hover,
 .art-more a:hover,
-.vb-parts .active a,
 .vb-bt a:hover,
 #commentform fieldset .comment-boton:hover {
 	/*background-color: <?php echo "#$hover_color" ?>;*/

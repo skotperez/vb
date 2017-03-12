@@ -129,62 +129,64 @@ wp_head(); ?>
 
 	<div id="pre">
 		<header>
+		<?php
+		if ( function_exists('pll_the_languages') ) {
+			$args = array(
+				'hide_if_no_translation' => 0
+			);
+			echo '<nav id="vb-lang"><i class="fa fa-2x fa-language"></i><ul class="vb-lang">'; pll_the_languages($args); echo '</ul></nav>';
+		}
+		?>
 		<img class="logo" src="<?php echo $blogtheme?>/images/vb.imago.png" alt="Imago voragine.net" />
 
 			<?php // to display a banner on the top of the header
 				//$banner = "<div id='banner'><img src='$blogtheme/images/500-cabera-07.png' alt='15 de octubre' /></div>";
 				//echo $banner;
-			$h = ( is_single() || is_page() ) ? "2" : "1";
-			?>
+			$h = ( is_single() || is_page() ) ? "2" : "1"; ?>
 				<h<?php echo $h; ?> id="blogname"><?php echo "<a href='$blogurl' title='Ir al inicio'>$blogname</a>"; ?></h<?php echo $h; ?>>
 				<div id="blogdesc"><?php echo $blogdesc; ?></div>
-			<?php if ( is_page_template("page.link.php") || get_post_type() == 'link' ) { ?>
-				<nav>
-				<ul class="vb-parts">
-					<li><a href="/"><i class="fa fa-align-left" aria-hidden="true"></i> Blog</a></li>
-					<li class="active"><a href="/linkoteca"><i class="fa fa-link" aria-hidden="true"></i> Linkoteca</a></li>
-					<li><a href="#about" title="Sobre voragine.net">Sobre voragine.net</a></li>
-					<li><a href="https://voragine.net/feed" title="RSS de voragine.net"><i class="fa fa-rss" aria-hidden="true"></i> Feed RSS</a></li>
-				</ul>
-				</nav>
-				<h1 class="vb-parts-desc">Linkoteca: Archivo de navegación</h1>
-			<?php } else { ?>
-				<nav>
-				<ul class="vb-parts">
-					<li class="active"><a href="/"><i class="fa fa-align-left" aria-hidden="true"></i> Blog</a></li>
-					<li><a href="/linkoteca"><i class="fa fa-link" aria-hidden="true"></i> Linkoteca</a></li>
-					<li><a href="#about" title="Sobre voragine.net">Sobre voragine.net</a></li>
-					<li><a href="https://voragine.net/feed" title="RSS de voragine.net"><i class="fa fa-rss" aria-hidden="true"></i> Feed RSS</a></li>
-				</ul>
-				</nav>
-
-			<nav>
-			<ul id="pre-nav">
-				<?php if ( is_single() ) { $query_cats = get_the_category($post->ID); }
-				else { $query_cats = array($wp_query->query_vars['category_name']); }
-
-				$context_args = array(
-					'hierarchical' => 0,
-					'exclude' => $catstoexclude,
+			<?php
+			$location = "primary";
+			if ( has_nav_menu( $location ) ) {
+				$args = array(
+					'theme_location'  => $location,
+					'container' => false,
+					'menu_id' => 'parts',
+					'menu_class' => 'vb-parts'
 				);
-				$contexts = get_categories($context_args);
-				//$context_out = "";
-				foreach ( $contexts as $cat ) {
-					$cat_link = get_category_link( $cat->term_id );
-					foreach ( $query_cats as $query_cat ) {
-							if ( $cat->slug == $query_cat->slug || $cat->slug == $query_cat ) {
-								$context_out1 = "<li class='current-cat'><a href='$cat_link'>$cat->name</a></li>";
-							} else {
-								$context_out2 = "<li><a href='$cat_link'>$cat->name</a></li>";
-							}
-					}
-					if ( $context_out1 != '' ) { echo $context_out1; $context_out2 = ''; $context_out1 = ''; }
-					else { echo $context_out2; $context_out2 = ''; $context_out1 = ''; }
+				echo '<nav>';
+				wp_nav_menu( $args );
+				echo '</nav>';
+			}
+
+			$location = "lang";
+			if ( has_nav_menu( $location ) ) {
+				$args = array(
+					'theme_location'  => $location,
+					'container' => false,
+					'menu_id' => 'lang',
+					'menu_class' => 'vb-lang'
+				);
+			//	echo '<nav>';
+			//	wp_nav_menu( $args );
+			//	echo '</nav>';
+			}
+			if ( is_page_template("page.link.php") || get_post_type() == 'link' ) {
+				echo '<h1 class="vb-parts-desc">Linkoteca: Archivo de navegación</h1>';
+			} else {
+				$location = "secondary";
+				if ( has_nav_menu( $location ) ) {
+					$args = array(
+						'theme_location'  => $location,
+						'container' => false,
+						'menu_id' => 'pre-nav',
+					);
+					echo '<nav>';
+					wp_nav_menu( $args );
+					echo '</nav>';
 				}
-				?>
-			</ul><!-- end id pre-nav -->
-			</nav>
-			<?php } // end if linkoteca ?>
+			}
+			?>
 
 			<div id="busca">
 				<?php include "searchform.php"; ?>

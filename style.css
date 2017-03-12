@@ -283,6 +283,7 @@ body {
 	/*font: 700 3.6em/1em 'Open Sans Condensed',sans-serif;*/
 	font: 100 2em/1em 'Libre Franklin',sans-serif;
 	text-transform: uppercase;
+	width: 425px;
 }
 #blogname a {
 	text-decoration: none;
@@ -414,6 +415,7 @@ body {
 }
 #pre-nav li,
 .page-numbers li,
+.vb-lang li,
 .vb-parts li {
 	line-height: 2.1em;
 	text-transform: uppercase;
@@ -433,15 +435,33 @@ body {
 	display: inline;
 	border-bottom: 1px solid #000
 }
-
+#vb-lang {
+	float: right;
+}
+.vb-lang {
+	float: right;
+	padding-left: 7px;
+}
 .vb-parts {
 	margin-bottom: 3em;
 	font-size: 1.2em;
 }
+.vb-lang li {
+	display: inline-block;
+	margin-left: -3px;
+}
+.vb-lang li a {
+	border-bottom: 1px solid #000;
+}
 .vb-parts li {
 	display: inline-block;
+	padding: 0 5px;
+}
+.vb-parts li.fa::before {
+	padding-right: 5px;
 }
 #pre-nav li a,
+.vb-lang li a,
 .vb-parts li a,
 .page-numbers li a,
 .art-more a {
@@ -451,7 +471,9 @@ body {
 	/*font-family: 'Open Sans Condensed';*/
 	font-family: 'Libre Franklin';
 }
-
+.vb-parts li a {
+	padding: 3px 0;
+}
 
 .home .format-link .art-tit,
 .home .format-aside .art-tit,
