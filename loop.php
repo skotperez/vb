@@ -6,6 +6,7 @@ $post_perma = get_permalink();
 $post_tit = get_the_title();
 if ( $post_format != '' || $post_type == 'link' ) { $post_date_human = get_the_time('d\/m\/Y'); }
 else { $post_date_human = get_the_time('d \d\e F \d\e Y'); }
+
 $post_date = get_the_time('Y-m-d');
 $u_time = get_the_time('U');
 $u_modified_time = get_the_modified_time('U');
@@ -15,8 +16,9 @@ $u_modified_time = get_the_modified_time('U');
 
 	<?php if ( $post_type == 'link' ) {
 		$link_url = get_post_meta( $post->ID, '_vb_metabox_link_url', true );
-	?>
-		<header><h2 class="link-tit entry-title" itemprop="name headline"><a href="<?php echo $link_url ?>"><?php echo $post_tit ?></a></h2></header>
+
+		$h = ( is_single() ) ? "1" : "2"; ?>
+		<header><h<?php echo $h; ?> class="link-tit entry-title" itemprop="name headline"><a href="<?php echo $link_url ?>"><?php echo $post_tit ?></a></h<?php echo $h; ?>></header>
 		<section><div class="art-date">
 			<div class='art-publisher' itemprop='publisher' itemscope itemtype='https://schema.org/Organization'>
       				<div itemprop='logo' itemscope itemtype='https://schema.org/ImageObject'>

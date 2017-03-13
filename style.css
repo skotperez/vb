@@ -299,6 +299,45 @@ body {
 	font: 100 2em/1em 'Libre Franklin',sans-serif;
 	text-transform: uppercase;
 }
+
+/* Tags list */
+.tag-list {
+	margin: 1em 0;
+}
+.tag-list li {
+	display: inline-block;
+	margin: 0 5px 15px 0;
+}
+.tag-list li a:link {
+	font: 100 1.2em/1em 'Libre Franklin',sans-serif;
+	text-transform: uppercase;
+	padding: 3px;
+	border: 1px solid #000;
+	text-decoration: none;
+	background-color: #fff;
+}
+.tag-list li a:visited {
+	background-color: #eee;
+	color: #000;
+	border-color: #eee;
+}
+.tag-list li a:hover {
+	background-color: #000;
+	border-color: #000;
+	color: #fff;
+}
+.tag-list .all-tags a:link,
+.tag-list .all-tags a:visited {
+	padding: 2px !important;
+	border: 2px solid #000 !important;
+	background-color: #fff;
+	color: #000;
+}
+.tag-list .all-tags a:hover {
+	background-color: #000;
+	color: #fff;
+}
+
 .art-date,
 .art-meta,
 .art-text {

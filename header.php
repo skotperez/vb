@@ -159,8 +159,49 @@ wp_head(); ?>
 				echo '</nav>';
 			}
 
-			if ( is_page_template("page.link.php") || get_post_type() == 'link' ) {
-				echo '<h1 class="vb-parts-desc">Linkoteca: Archivo de navegación</h1>';
+			if ( is_page_template("page.link.php") ) {
+				if ( array_key_exists('tags',$_GET) ) {
+					$tags_count = sanitize_text_field($_GET['tags']);
+					$tags_orderby = 'name';
+					$tags_order = 'ASC';
+					$tit = __('Linkoteca. Contexts','vb');
+					$all_tags_out = '';
+				} elseif ( array_key_exists('tag',$_GET) ) {
+					$tags_count = '50';
+					$tags_orderby = 'count';
+					$tags_order = 'DESC';
+					$tag = sanitize_text_field($_GET['tag']);
+					$tit = sprintf(__('Linkoteca. Context %s','vb'), $tag );
+					$all_tags_out = '<li class="all-tags"><a href="'.$perma.'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
+				} else {
+					$tags_count = '50';
+					$tags_orderby = 'count';
+					$tags_order = 'DESC';
+					$tit = get_the_title();
+					$all_tags_out = '<li class="all-tags"><a href="'.$perma.'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
+				}
+
+				$terms = get_terms( array(
+					'taxonomy' => 'post_tag',
+			        	'hide_empty' => true,
+			        	'orderby' => $tags_orderby,
+			        	'order' => $tags_order,
+			        	'number' => $tags_count
+				)); 
+				$perma = get_permalink();
+				echo '<h1 class="vb-parts-desc">'.$tit.'</h1>';
+
+				if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+					echo '<ul class="tag-list">';
+					echo $all_tags_out;
+					foreach ( $terms as $t ) {
+						$t_link = '?tag='.$t->slug;
+						echo '<li><a href='.$t_link.'>'.$t->name.'</a></li>';
+					}
+					echo '</ul>';
+				}
+			} elseif ( is_singular('link') ) {
+				echo '<h2 class="vb-parts-desc">'.__('Linkoteca. Navigation archive','vb').'</h1>';
 			} else {
 				$location = "secondary";
 				if ( has_nav_menu( $location ) ) {

@@ -24,6 +24,8 @@ a:hover,
 	color: <?php echo "#$hover_color" ?>;
 }
 
+.single-link #parts .fa-link,
+.single-link #parts .fa-link a,
 .vb-parts .current-menu-item,
 .vb-parts .current-menu-item a,
 .current-s a,
