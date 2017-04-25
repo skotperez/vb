@@ -36,6 +36,7 @@
 				<li><a href='https://twitter.com/skotperez' title='@skotperez en Twitter'><i class='fa fa-twitter fa-2x'></i></a></li>
 				<li><a href='https://plus.google.com/116735119659908730533' title='+skotperez en Google Plus'><i class='fa fa-google-plus fa-2x'></i></a></li>
 				<li><a href='https://github.com/skotperez' title='skotperez en GitHub'><i class='fa fa-github fa-2x'></i></a></li>
+				<li><a href='https://instagram.com/skotperez' title='skotperez en Instagram'><i class='fa fa-instagram fa-2x'></i></a></li>
 
 </ul>
 <p>Desarrollador de software libre en <a href='https://montera34.com'>Montera34</a>, estudio de desarrollo web que puso en marcha en 2004 junto a compañeros de la Escuela Técnica Superior de Arquitectura de Madrid, donde estudió arquitectura.</p>
