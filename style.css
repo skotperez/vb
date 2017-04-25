@@ -109,7 +109,13 @@ blockquote p:after {
 address {
 	display: inline-block;
 }
-
+figure {
+	margin: 0;
+}
+figcaption,
+figcaption a {
+	color: #aaa !important;
+}
 .alignleft {
 	float: left;
 	margin-right: 10px;

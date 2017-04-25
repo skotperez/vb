@@ -30,7 +30,7 @@
 		";
 		$epi_author = "
 			<div class='epi-col3'>
-				<img class='alignleft' src='".$blogtheme."/images/alfonso.sanchez.uzabal.jpg' alt='Alfonso Sánchez Uźabal'>
+				<figure class='alignleft'><img src='".$blogtheme."/images/alfonso.sanchez.uzabal.jpg' alt='Alfonso Sánchez Uźabal' /><figcaption>Foto: <a href='http://cecilehuet.com/'>Cécile Huet</a></figcaption></figure>
 				<address><strong><a href='http://skotperez.net'>Alfonso Sánchez Uzábal</a></strong></address>
 <ul class='linelist'>
 				<li><a href='https://twitter.com/skotperez' title='@skotperez en Twitter'><i class='fa fa-twitter fa-2x'></i></a></li>
