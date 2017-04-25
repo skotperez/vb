@@ -159,7 +159,8 @@ wp_head(); ?>
 				echo '</nav>';
 			}
 
-			if ( is_page_template("page.link.php") ) {
+			$pt = ( array_key_exists('post_type',$_GET) ) ? sanitize_text_field($_GET['post_type']) : '';
+			if ( is_page_template("page.link.php" ) || is_search() && $pt == 'link' ) {
 				if ( array_key_exists('tags',$_GET) ) {
 					$tags_count = sanitize_text_field($_GET['tags']);
 					$tags_orderby = 'name';
@@ -172,6 +173,12 @@ wp_head(); ?>
 					$tags_order = 'DESC';
 					$tag = sanitize_text_field($_GET['tag']);
 					$tit = sprintf(__('Linkoteca. Context %s','vb'), $tag );
+					$all_tags_out = '<li class="all-tags"><a href="'.$perma.'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
+				} elseif ( is_search() ) {
+					$tags_count = '50';
+					$tags_orderby = 'count';
+					$tags_order = 'DESC';
+					$tit = __('Linkoteca. Navigation archive','vb');
 					$all_tags_out = '<li class="all-tags"><a href="'.$perma.'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
 				} else {
 					$tags_count = '50';

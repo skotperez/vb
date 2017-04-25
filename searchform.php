@@ -15,7 +15,7 @@ if ( !empty($query_s) ) {
 
 ?>
 
-<form method="get" id="searchform"<?php echo "$formclass" ?> action="<?php home_url(); ?>">
+<form method="get" id="searchform"<?php echo "$formclass" ?> action="<?php echo esc_url(home_url('/','https')); ?>">
 	<label for="s"><i class="fa fa-search"></i> <?php echo $textencaja ?></label>
 	<input type="text" value="" name="s" id="s"/>
 	<input type="hidden" name="post_type" value="<?php echo $post_type ?>" />
