@@ -12,7 +12,7 @@ if ( have_posts() ) :
 		// if ( in_category('129') ) { // if breves category 
 			// TODO: automatic system to include first image thumb of the post
 			// diff between breves and the other caterories
-		if ( is_single() || is_page() ) { comments_template(); }
+		if ( is_single() ) { comments_template(); }
 
 		?>
 	<?php endwhile;

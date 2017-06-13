@@ -57,7 +57,8 @@ $u_modified_time = get_the_modified_time('U');
 		} else {
 			echo "<h1 class='art-tit entry-title' itemprop='name headline'>$post_tit</h1>";
 		} // end if home, archive, search
-	//} ?>
+	//}
+	if ( !is_page() ) { ?>
 
 		<div class="art-date">
 			<div class='art-publisher' itemprop='publisher' itemscope itemtype='https://schema.org/Organization'>
@@ -95,7 +96,7 @@ $u_modified_time = get_the_modified_time('U');
 			edit_post_link('Editar', ' &bull; ', ''); ?>
 		</div><!-- end class art-date -->
 	</header>
-	<?php //} // end if link post format ?>
+	<?php } // end if not page ?>
 <?php
 $art_text_class = "art-text";
 //// display all post thumbs with link to original size
