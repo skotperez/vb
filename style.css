@@ -847,3 +847,24 @@ img.avatar {
 	#ante, #pre, #content, #epi { width: 99%; }
 	img { max-width: 100%; }
 }
+
+/* NEWSLETTER PAGE */
+.tnp-field-list {
+	display: inline-block;
+}
+.tnp-subscription input[type="checkbox"],
+.tnp-widget input[type="radio"] {
+	vertical-align: middle;
+}
+.tnp-field-privacy {
+	margin-top: 10px;
+}
+.tnp-field-privacy label {
+	font-size: 12px !important;
+}
+.tnp-submit {
+	text-transform: uppercase;
+}
+.tnp-submit:hover {
+	background-color: #000 !important;
+}
