@@ -670,20 +670,20 @@ h2.art-tit {
 	margin-top: 5em;
 	border-top: 1px solid #000;
 }
-.comments-tit {
-	/*font: bold 1.4em/1.6em Helvetica, Arial, sans-serif;*/
-	font: 100 1.4em/1.6em 'Libre Franklin',Helvetica, Arial, sans-serif;
-	text-transform: uppercase;
-}
+.discourse-participants,
+.comments-title,
+.comments-tit,
 .pings-tit {
 	/*font: bold 1.4em/1.6em Helvetica, Arial, sans-serif;*/
 	font: 100 1.4em/1.6em 'Libre Franklin',Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
 }
+.comment-list,
 .comments-list {
 	width: 500px;
 	margin: 2em 0;
 }
+.comment-list .depth-1,
 .comments-list .depth-1 {
 	margin: 6em 0 0 0;
 }
@@ -739,6 +739,7 @@ img.avatar {
 }
 .comment-date {
 }
+.comment-content,
 .comment-text,
 .nocomments {
 	/*margin-left: 78px;*/
