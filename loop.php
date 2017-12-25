@@ -16,38 +16,43 @@ $u_modified_time = get_the_modified_time('U');
 
 	<?php if ( $post_type == 'link' ) {
 		$link_url = get_post_meta( $post->ID, '_vb_metabox_link_url', true );
+		$link_quote = get_post_meta( $post->ID, '_vb_metabox_link_quote', true );
+		$link_quote_out = ( $link_quote != '' ) ? '<div class="art-quote"><div class="alignleft"><i class="fa fa-quote-left"></i></div>'.apply_filters('the_content',$link_quote).'</div>' : '';
 
 		$h = ( is_single() ) ? "1" : "2"; ?>
 		<header><h<?php echo $h; ?> class="link-tit entry-title" itemprop="name headline"><a href="<?php echo $link_url ?>"><?php echo $post_tit ?></a></h<?php echo $h; ?>></header>
-		<section><div class="art-date">
-			<div class='art-publisher' itemprop='publisher' itemscope itemtype='https://schema.org/Organization'>
-      				<div itemprop='logo' itemscope itemtype='https://schema.org/ImageObject'>
-				<img src='<?php echo $blogtheme ?>/images/vb.imago.png' alt="Imago voragine.net" />
-					<meta itemprop='url' content='<?php echo $blogtheme ?>/images/vb.imago.png' />
-					<meta itemprop='width' content='27' />
-					<meta itemprop='height' content='50' />
+		<section>
+			<div class="art-date">
+				<div class='art-publisher' itemprop='publisher' itemscope itemtype='https://schema.org/Organization'>
+	      				<div itemprop='logo' itemscope itemtype='https://schema.org/ImageObject'>
+					<img src='<?php echo $blogtheme ?>/images/vb.imago.png' alt="Imago voragine.net" />
+						<meta itemprop='url' content='<?php echo $blogtheme ?>/images/vb.imago.png' />
+						<meta itemprop='width' content='27' />
+						<meta itemprop='height' content='50' />
+					</div>
+					<meta itemprop='name' content='Voragine.net' />
 				</div>
-				<meta itemprop='name' content='Voragine.net' />
-			</div>
-
-			<?php
-			//echo "<a href='" .$post_perma. "'  title='Enlace permanente'>&infin;</a> &bull; ";
-			echo "<a href='" .$post_perma. "'  title='Enlace permanente'><time class='published updated' datetime='$post_date' itemprop='datePublished'>" .$post_date_human. "</time></a> &bull; ";
-			//the_tags('<span class="tags" itemprop="keywords">',', ','</span>');
-			//the_taxonomies('<span class="tags" itemprop="keywords">',', ','</span>');
-			$tags = get_the_terms($post->ID,'post_tag');
-			if ( is_array($tags) ) {
-				$tag_list = array();
-				foreach ( $tags as $t ) {
-					$tag_list[] = '<a rel="tag" href="/linkoteca?tag='.$t->slug.'">'.$t->name.'</a>';
+	
+				<?php
+				//echo "<a href='" .$post_perma. "'  title='Enlace permanente'>&infin;</a> &bull; ";
+				echo "<a href='" .$post_perma. "'  title='Enlace permanente'><time class='published updated' datetime='$post_date' itemprop='datePublished'>" .$post_date_human. "</time></a> &bull; ";
+				//the_tags('<span class="tags" itemprop="keywords">',', ','</span>');
+				//the_taxonomies('<span class="tags" itemprop="keywords">',', ','</span>');
+				$tags = get_the_terms($post->ID,'post_tag');
+				if ( is_array($tags) ) {
+					$tag_list = array();
+					foreach ( $tags as $t ) {
+						$tag_list[] = '<a rel="tag" href="/linkoteca?tag='.$t->slug.'">'.$t->name.'</a>';
+					}
+					$tag_list_out = join(", ",$tag_list);
+					echo '<span class="tags" itemprop="keywords">'.$tag_list_out.'</span>';
 				}
-				$tag_list_out = join(", ",$tag_list);
-				echo '<span class="tags" itemprop="keywords">'.$tag_list_out.'</span>';
-			}
-			if (is_single()) echo " &bull; Por <address itemscope itemprop='author' itemtype='http://schema.org/Person' class='author vcard'><span itemprop='name'><a itemprop='url' class='url fn' href='https://plus.google.com/u/0/116735119659908730533?rel=author'>Alfonso Sánchez Uzábal</a></span></address>";
-			edit_post_link('Editar', ' &bull; ', ''); 
-			?>
-		</div></section>
+				if (is_single()) echo " &bull; Por <address itemscope itemprop='author' itemtype='http://schema.org/Person' class='author vcard'><span itemprop='name'><a itemprop='url' class='url fn' href='https://plus.google.com/u/0/116735119659908730533?rel=author'>Alfonso Sánchez Uzábal</a></span></address>";
+				edit_post_link('Editar', ' &bull; ', ''); 
+				?>
+			</div>
+			<?php echo $link_quote_out; ?>
+		</section>
 	<?php } else { // if is not link post type ?>
 
 	<header>

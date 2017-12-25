@@ -122,14 +122,15 @@ else { echo "$counter comentarios"; }
 
 // custom meta box in link CPT
 function vb_metabox_link() {
-		add_meta_box(
-			'_vb_metabox_link_url', // ID
-			'URL', // title
-			'vb_metabox_link_render', // callback function
-			'link', // post type
-			'normal', // context: normal, side, advanced
-			'high' // priority: high, core, default, low
-		);
+	add_meta_box(
+		'_vb_metabox_link_url', // ID
+		'URL and quotes', // title
+		'vb_metabox_link_render', // callback function
+		'link', // post type
+		'normal', // context: normal, side, advanced
+		'high' // priority: high, core, default, low
+	);
+
 }
 add_action( 'add_meta_boxes', 'vb_metabox_link', 10, 2 );
 
@@ -140,17 +141,20 @@ add_action( 'add_meta_boxes', 'vb_metabox_link', 10, 2 );
  */
 function vb_metabox_link_render( $post ) {
 
-  // Add an nonce field so we can check for it later.
-  wp_nonce_field( 'vb_metabox_link_render', 'vb_metabox_link_render_nonce' );
+	// Add an nonce field so we can check for it later.
+	wp_nonce_field( 'vb_metabox_link_render', 'vb_metabox_link_render_nonce' );
 
-  /*
-   * Use get_post_meta() to retrieve an existing value
-   * from the database and use the value for the form.
-   */
-  $value = get_post_meta( $post->ID, '_vb_metabox_link_url', true );
+	$url = get_post_meta( $post->ID, '_vb_metabox_link_url', true );
+	$quote = get_post_meta( $post->ID, '_vb_metabox_link_quote', true );
 
-  echo '<label for="_vb_metabox_link_url">Link URL</label> ';
-  echo '<input type="text" id="_vb_metabox_link_url" name="_vb_metabox_link_url" value="' . esc_attr( $value ) . '" size="95%" />';
+	echo '<label for="_vb_metabox_link_url">Link URL</label> ';
+	echo '<input type="text" id="_vb_metabox_link_url" name="_vb_metabox_link_url" value="' . esc_attr( $url ) . '" />';
+	$settings = array(
+		'wpautop' => true,
+		'media_buttons' => false,
+		'textarea_rows' => 5,
+	);
+	wp_editor($quote,'_vb_metabox_link_quote',$settings);
 
 }
 
@@ -161,44 +165,44 @@ function vb_metabox_link_render( $post ) {
  */
 function vb_metabox_link_save( $post_id ) {
 
-  /*
-   * We need to verify this came from the our screen and with proper authorization,
-   * because save_post can be triggered at other times.
-   */
+	/*
+	* We need to verify this came from the our screen and with proper authorization,
+	* because save_post can be triggered at other times.
+	*/
 
-  // Check if our nonce is set.
-  if ( ! isset( $_POST['vb_metabox_link_render_nonce'] ) )
-    return $post_id;
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['vb_metabox_link_render_nonce'] ) )
+		return $post_id;
 
-  $nonce = $_POST['vb_metabox_link_render_nonce'];
+	$nonce = $_POST['vb_metabox_link_render_nonce'];
 
-  // Verify that the nonce is valid.
-  if ( ! wp_verify_nonce( $nonce, 'vb_metabox_link_render' ) )
-      return $post_id;
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $nonce, 'vb_metabox_link_render' ) )
+		return $post_id;
 
-  // If this is an autosave, our form has not been submitted, so we don't want to do anything.
-  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
-      return $post_id;
+	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+		return $post_id;
 
-  // Check the user's permissions.
-  if ( 'page' == $_POST['post_type'] ) {
+	// Check the user's permissions.
+	if ( 'page' == $_POST['post_type'] ) {
+		if ( ! current_user_can( 'edit_page', $post_id ) )
+			return $post_id;
 
-    if ( ! current_user_can( 'edit_page', $post_id ) )
-        return $post_id;
-  
-  } else {
+	} else {
+		if ( ! current_user_can( 'edit_post', $post_id ) )
+			return $post_id;
+	}
 
-    if ( ! current_user_can( 'edit_post', $post_id ) )
-        return $post_id;
-  }
+	/* OK, its safe for us to save the data now. */
+	// Sanitize user input.
+	$url = sanitize_text_field( $_POST['_vb_metabox_link_url'] );
+	$quote = $_POST['_vb_metabox_link_quote'];
 
-  /* OK, its safe for us to save the data now. */
+	// Update the meta field in the database.
+	update_post_meta( $post_id, '_vb_metabox_link_url', $url );
+	update_post_meta( $post_id, '_vb_metabox_link_quote', $quote );
 
-  // Sanitize user input.
-  $mydata = sanitize_text_field( $_POST['_vb_metabox_link_url'] );
-
-  // Update the meta field in the database.
-  update_post_meta( $post_id, '_vb_metabox_link_url', $mydata );
 }
 add_action( 'save_post', 'vb_metabox_link_save' );
 

@@ -346,7 +346,8 @@ body {
 
 .art-date,
 .art-meta,
-.art-text {
+.art-text,
+.art-quote {
 	font: 300 1.4em/1.6em 'Merriweather',Helvetica,Arial,sans-serif;
 }
 .art-text strong {
@@ -599,6 +600,10 @@ h2.art-tit {
         left: 130px;
         top: 5px;
 }*/
+.art-quote {
+	color: #aaa;
+	margin: 0 0 0 1em;
+}
 .art-text {
 	margin: 1em 0;
 }
