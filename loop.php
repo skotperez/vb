@@ -30,8 +30,8 @@ $u_modified_time = get_the_modified_time('U');
 			<div class="art-date">
 				<div class='art-publisher' itemprop='publisher' itemscope itemtype='https://schema.org/Organization'>
 	      				<div itemprop='logo' itemscope itemtype='https://schema.org/ImageObject'>
-					<img src='<?php echo $blogtheme ?>/images/vb.imago.png' alt="Imago voragine.net" />
-						<meta itemprop='url' content='<?php echo $blogtheme ?>/images/vb.imago.png' />
+					<img src='<?php echo $blogtheme ?>/images/favicon-grey.png' alt="Imago voragine.net" />
+						<meta itemprop='url' content='<?php echo $blogtheme ?>/images/favicon-grey.png' />
 						<meta itemprop='width' content='27' />
 						<meta itemprop='height' content='50' />
 					</div>
@@ -74,8 +74,8 @@ $u_modified_time = get_the_modified_time('U');
 		<div class="art-date">
 			<div class='art-publisher' itemprop='publisher' itemscope itemtype='https://schema.org/Organization'>
       				<div itemprop='logo' itemscope itemtype='https://schema.org/ImageObject'>
-				<img src='<?php echo $blogtheme ?>/images/vb.imago.png' alt="Imago voragine.net" />
-					<meta itemprop='url' content='".$blogtheme."/images/vb.imago.png' />
+				<img src='<?php echo $blogtheme ?>/images/favicon-grey.png' alt="Imago voragine.net" />
+					<meta itemprop='url' content='".$blogtheme."/images/favicon-grey.png' />
 					<meta itemprop='width' content='27' />
 					<meta itemprop='height' content='50' />
 				</div>

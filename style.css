@@ -360,7 +360,7 @@ body {
 	display: inline-block;
 }
 .art-publisher img {
-	height: 1em;
+	height: 16px;
 	width: auto;
 	vertical-align: middle;
 }
