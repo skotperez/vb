@@ -362,6 +362,7 @@ body {
 .art-publisher img {
 	height: 1em;
 	width: auto;
+	vertical-align: middle;
 }
 .one-thumb {
 	margin-left: 110px;
@@ -481,6 +482,8 @@ body {
 	display: inline;
 	border-bottom: 1px solid #000
 }
+
+/* lang menu and main menu */
 #vb-lang {
 	float: right;
 }
@@ -503,9 +506,6 @@ body {
 	display: inline-block;
 	padding: 0 5px;
 }
-.vb-parts li.fa::before {
-	padding-right: 5px;
-}
 #pre-nav li a,
 .vb-lang li a,
 .vb-parts li a,
@@ -519,6 +519,9 @@ body {
 }
 .vb-parts li a {
 	padding: 3px 0;
+}
+.single-link .linkoteca a {
+	
 }
 
 .home .format-link .art-tit,
@@ -539,9 +542,17 @@ h2.art-tit {
 	font: 100 2em/1.3em 'Libre Franklin',sans-serif;
 	text-transform: uppercase;
 }
+.link-header {
+}
 .link-tit {
 	/*font: bold 1.4em/1.6em sans-serif;*/
 	font: 100 1.4em/1.4em 'Libre Franklin',sans-serif;
+	text-transform: uppercase;
+	margin-right: 5px;
+	display: inline;
+}
+.link-linkout {
+	vertical-align: text-top;
 }
 .error-tit {
 	/*font: bold 7.8em/1.4em 'Open Sans Condensed',sans-serif;*/

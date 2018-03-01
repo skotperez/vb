@@ -27,9 +27,10 @@ function vb_theme_setup() {
 
 // load js scripts in the site
 function vb_load_scripts() {
-	wp_enqueue_style(
-		'fa-css',
-		get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css'
+	wp_enqueue_script(
+		'fa-js',
+		get_template_directory_uri() . '/js/fontawesome-all.min.js',NULL,NULL,true
+
 	);
 
 } // end load js scripts in the site

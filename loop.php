@@ -17,10 +17,15 @@ $u_modified_time = get_the_modified_time('U');
 	<?php if ( $post_type == 'link' ) {
 		$link_url = get_post_meta( $post->ID, '_vb_metabox_link_url', true );
 		$link_quote = get_post_meta( $post->ID, '_vb_metabox_link_quote', true );
-		$link_quote_out = ( $link_quote != '' ) ? '<div class="art-quote"><div class="alignleft"><i class="fa fa-quote-left"></i></div>'.apply_filters('the_content',$link_quote).'</div>' : '';
+		$link_quote_out = ( $link_quote != '' ) ? '<div class="art-quote"><div class="alignleft"><i class="fas fa-quote-left"></i></div>'.apply_filters('the_content',$link_quote).'</div>' : '';
 
-		$h = ( is_single() ) ? "1" : "2"; ?>
-		<header><h<?php echo $h; ?> class="link-tit entry-title" itemprop="name headline"><a href="<?php echo $link_url ?>"><?php echo $post_tit ?></a></h<?php echo $h; ?>></header>
+		$h = ( is_single() ) ? "1" : "2";
+		if ( is_single() ) { ?>
+			<header class="link-header"><h1 class="link-tit entry-title" itemprop="name headline"><?php echo $post_tit ?></h1><a class="link-linkout" href="<?php echo $link_url ?>"><i class="fas fa-external-link-square-alt fa-lg"></i></a></header>
+		<?php }
+		else { ?>
+			<header class="link-header"><h2 class="link-tit entry-title" itemprop="name headline"><a href="<?php echo $post_perma ?>"><?php echo $post_tit ?></a></h2><a class="link-linkout" href="<?php echo $link_url ?>"><i class="fas fa-external-link-square-alt fa-lg"></i></a></header>
+		<?php } ?>
 		<section>
 			<div class="art-date">
 				<div class='art-publisher' itemprop='publisher' itemscope itemtype='https://schema.org/Organization'>
@@ -53,7 +58,8 @@ $u_modified_time = get_the_modified_time('U');
 			</div>
 			<?php echo $link_quote_out; ?>
 		</section>
-	<?php } else { // if is not link post type ?>
+	<?php }
+	else { // if is not link post type ?>
 
 	<header>
 	<?php //if ( $post_format == 'link' ) { } else {
@@ -219,9 +225,9 @@ $art_text_class = "art-text";
 					$fb_share_url = "http://facebook.com/sharer.php?u=" .$post_perma_enc;
 					$gplus_share_url = "https://plus.google.com/share?url=" .$post_perma_enc;
 					?>
-					<li><a href="<?php echo $tw_share_url?>" title="Compartir en Twitter" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
-					<li><a href="<?php echo $fb_share_url ?>" title="Compartir en Facebook" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
-					<li><a href="<?php echo $gplus_share_url ?>" title="Compartir en Google Plus" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
+					<li><a href="<?php echo $tw_share_url?>" title="Compartir en Twitter" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></li>
+					<li><a href="<?php echo $fb_share_url ?>" title="Compartir en Facebook" target="_blank"><i class="fab fa-facebook fa-2x"></i></a></li>
+					<li><a href="<?php echo $gplus_share_url ?>" title="Compartir en Google Plus" target="_blank"><i class="fab fa-google-plus fa-2x"></i></a></li>
 				</ul><!-- end .linelist -->
 			</div><!-- end .art-share -->
 			

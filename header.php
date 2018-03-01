@@ -134,7 +134,7 @@ wp_head(); ?>
 			$args = array(
 				'hide_if_no_translation' => 0
 			);
-			echo '<nav id="vb-lang"><i class="fa fa-2x fa-language"></i><ul class="vb-lang">'; pll_the_languages($args); echo '</ul></nav>';
+			echo '<nav id="vb-lang"><ul class="vb-lang">'; pll_the_languages($args); echo '</ul></nav>';
 		}
 		?>
 		<img class="logo" src="<?php echo $blogtheme?>/images/vb.imago.png" alt="Imago voragine.net" />
