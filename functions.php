@@ -25,6 +25,24 @@ function vb_theme_setup() {
 
 }
 
+/**
+ * Register our sidebars and widgetized areas.
+ *
+ */
+function vb_widgets_init() {
+
+	register_sidebar( array(
+		'name'          => 'Footer sidebar',
+		'id'            => 'vb_widget_footer',
+		'before_widget' => '<div class="epi-col3">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widget-tit">',
+		'after_title'   => '</h2>',
+	) );
+
+}
+add_action( 'widgets_init', 'vb_widgets_init' );
+
 // load js scripts in the site
 function vb_load_scripts() {
 	wp_enqueue_script(
