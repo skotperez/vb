@@ -102,7 +102,7 @@ if ( is_single() || is_page() ) {
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo "$blogtheme/style.php" ?>" type="text/css" media="screen" />
 <style>
-@import 'https://fonts.googleapis.com/css?family=Merriweather:300,300i,700,700i|Open+Sans+Condensed:700|Libre+Franklin:100,200,300';
+@import 'https://fonts.googleapis.com/css?family=Merriweather:300,300i,700,700i|Libre+Franklin:100,200,300';
 </style>
 
 <link rel="alternate" type="application/rss+xml" title="<?php echo $blogname; ?> RSS Feed suscription" href="<?php bloginfo('rss2_url'); ?>" />
