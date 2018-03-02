@@ -460,6 +460,48 @@ body {
 	background-color: #000;
 	color: #fff;
 }
+#pre-nav li.vb-digitautonomy:after {
+	background-image: url(images/vb.autonomia.digital.sm.png);
+}
+#pre-nav li.vb-freeculture:after {
+	background-image: url(images/vb.cultura.libre.sm.png);
+}
+#pre-nav li.vb-techculture:after {
+	background-image: url(images/vb.cultura.tecnologica.sm.png);
+}
+#pre-nav li.vb-webdev:after {
+	background-image: url(images/vb.desarrollo.web.sm.png);
+}
+#pre-nav li.vb-linux:after {
+	background-image: url(images/vb.gnu.linux.sm.png);
+}
+#pre-nav li.vb-infrastrucrure:after {
+	background-image: url(images/vb.infraestructura.digital.sm.png);
+}
+#pre-nav li.vb-scripting:after {
+	background-image: url(images/vb.scripting.programacion.sm.png);
+}
+#pre-nav li.vb-freesoft:after {
+	background-image: url(images/vb.software.libre.sm.png);
+}
+#pre-nav li.vb-datacommons:after {
+	background-image: url(images/vb.visualizacion.datos.sm.png);
+}
+#pre-nav li.vb-wordpress:after {
+	background-image: url(images/vb.wordpress.sm.png);
+}
+
+#pre-nav li:after {
+	content: "";
+	width: 50px;
+	height: 16px;
+	margin-left: 5px;
+	background-repeat: no-repeat;
+	background-position: center left;
+	display: inline-block;
+	vertical-align: text-bottom;
+}
+
 #pre-nav li,
 .page-numbers li,
 .vb-lang li,
