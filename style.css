@@ -603,7 +603,9 @@ h2.art-tit {
 	font: normal 0.9em/1.2em sans-serif;
 	color: #aaa;
 }
-
+.art-img {
+	margin: 1em 0;
+}
 
 #epi {
 	clear: both;

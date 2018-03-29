@@ -9,6 +9,9 @@ function vb_theme_setup() {
 	// post formats
 	add_theme_support( 'post-formats', array( 'aside','link','quote','video' ) );
 
+	// thumbnails
+	add_theme_support( 'post-thumbnails' ); 
+
 	/* Load JavaScript files on the 'wp_enqueue_scripts' action hook. */
 	add_action( 'wp_enqueue_scripts', 'vb_load_scripts' );
 	/* Load JavaScript files on admin panel. */
@@ -317,10 +320,10 @@ function vb_create_post_type() {
 		'publicly_queryable' => true,
 		'exclude_from_search' => false,
 		'menu_position' => 5,
-		//'menu_icon' => get_template_directory_uri() . '/images/icon-post.type-integrantes.png',
+		'menu_icon' => 'dashicons-admin-links',
 		'hierarchical' => false, // if true this post type will be as pages
 		'query_var' => true,
-		'supports' => array('title','author','trackbacks','comments' ),
+		'supports' => array('title','author','trackbacks','comments','thumbnail' ),
 		'rewrite' => array('slug'=>'link','with_front'=>false),
 		'can_export' => true,
 		'_builtin' => false,

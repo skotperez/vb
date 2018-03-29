@@ -10,6 +10,12 @@ else { $post_date_human = get_the_time('d \d\e F \d\e Y'); }
 $post_date = get_the_time('Y-m-d');
 $u_time = get_the_time('U');
 $u_modified_time = get_the_modified_time('U');
+
+if ( has_post_thumbnail() ) {
+	$loop_image = '<figure class="art-img">'.get_the_post_thumbnail($post->ID,'large').'</figure>';
+} else { $loop_image = ""; }
+
+
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope="" itemtype="http://schema.org/BlogPosting">
 <article>
@@ -26,6 +32,7 @@ $u_modified_time = get_the_modified_time('U');
 		else { ?>
 			<header class="link-header"><h2 class="link-tit entry-title" itemprop="name headline"><a href="<?php echo $post_perma ?>"><?php echo $post_tit ?></a></h2><a class="link-linkout" href="<?php echo $link_url ?>"><i class="fas fa-external-link-square-alt fa-lg"></i></a></header>
 		<?php } ?>
+
 		<section>
 			<div class="art-date">
 				<div class='art-publisher' itemprop='publisher' itemscope itemtype='https://schema.org/Organization'>
@@ -56,6 +63,7 @@ $u_modified_time = get_the_modified_time('U');
 				edit_post_link('Editar', ' &bull; ', ''); 
 				?>
 			</div>
+			<?php echo $loop_image; ?>
 			<?php echo $link_quote_out; ?>
 		</section>
 	<?php }
