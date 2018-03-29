@@ -170,8 +170,8 @@ function vb_metabox_link_render( $post ) {
 	echo '<input type="text" id="_vb_metabox_link_url" name="_vb_metabox_link_url" value="' . esc_attr( $url ) . '" />';
 	$settings = array(
 		'wpautop' => true,
-		'media_buttons' => false,
-		'textarea_rows' => 5,
+		'media_buttons' => true,
+		'textarea_rows' => 10,
 	);
 	wp_editor($quote,'_vb_metabox_link_quote',$settings);
 
