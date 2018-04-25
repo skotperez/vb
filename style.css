@@ -585,7 +585,11 @@ h2.art-tit {
 }
 .art-quote {
 	color: #aaa;
-	margin: 0 0 0 1em;
+	margin: 1em 0;
+}
+.link-linkout {
+	font: 100 1.2em/1em 'Libre Franklin';
+	text-transform: uppercase;
 }
 .art-text {
 	margin: 1em 0;

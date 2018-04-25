@@ -65,6 +65,7 @@ if ( has_post_thumbnail() ) {
 			</div>
 			<?php echo $loop_image; ?>
 			<?php echo $link_quote_out; ?>
+					<?php if ( is_single() ) { ?><div class="art-link"><a class="link-linkout" href="<?php echo $link_url ?>"><i class="fas fa-external-link-square-alt fa-lg"></i> Visitar contenido original</a></div><?php } ?>
 		</section>
 	<?php }
 	else { // if is not link post type ?>
