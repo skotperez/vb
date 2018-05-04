@@ -135,12 +135,14 @@ figcaption a {
 }
 ul.editedlist,
 .art-text ul,
+.art-quote ul,
 .comment-text ul {
 	list-style-type: none;
 	margin-bottom: 1em;
 }
 ol.editedlist,
 .art-text ol,
+.art-quote ul,
 .comment-text ol {
 	margin-bottom: 1em;
 	list-style: decimal inside;
@@ -148,7 +150,9 @@ ol.editedlist,
 .editedlist li,
 .art-related li,
 .art-text ul li,
+.art-quote ul li,
 .art-text ol li,
+.art-quote ol li,
 .comment-text ul li,
 .comment-text ol li {
 	margin-left: 13px;
@@ -156,6 +160,7 @@ ol.editedlist,
 .editedlist li:before,
 .art-related li:before,
 .art-text ul li:before,
+.art-quote ul li:before,
 .comment-text ul li:before {
 	content: "+";
 	padding-right: 5px;
