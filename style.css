@@ -142,7 +142,7 @@ ul.editedlist,
 }
 ol.editedlist,
 .art-text ol,
-.art-quote ul,
+.art-quote ol,
 .comment-text ol {
 	margin-bottom: 1em;
 	list-style: decimal inside;
