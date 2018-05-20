@@ -161,6 +161,7 @@ wp_head(); ?>
 
 			$pt = ( array_key_exists('post_type',$_GET) ) ? sanitize_text_field($_GET['post_type']) : '';
 			if ( is_page_template("page.link.php" ) || is_search() && $pt == 'link' ) {
+				$perma = get_permalink();
 				if ( array_key_exists('tags',$_GET) ) {
 					$tags_count = sanitize_text_field($_GET['tags']);
 					$tags_orderby = 'name';
@@ -174,20 +175,20 @@ wp_head(); ?>
 					$tag = sanitize_text_field($_GET['tag']);
 					$tag_data = get_term_by('slug',$tag,'post_tag');
 					$tit = 'Linkoteca. '.$tag_data->name;
-					$all_tags_out = '<li class="all-tags"><a href="'.esc_url( remove_query_arg(array('page','paged','tag'),$perma) ).'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
+					$all_tags_out = '<li class="all-tags"><a href="'.$perma.'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
 				} elseif ( is_search() ) {
 					$query_s = $wp_query->query_vars['s'];
 					$tags_count = '50';
 					$tags_orderby = 'count';
 					$tags_order = 'DESC';
 					$tit = strintf(__('Linkoteca. Search results under ""%s"','vb'), $query_s);
-					$all_tags_out = '<li class="all-tags"><a href="'.esc_url( remove_query_arg(array('page','paged','tag'),$perma) ).'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
+					$all_tags_out = '<li class="all-tags"><a href="'.$perma.'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
 				} else {
 					$tags_count = '50';
 					$tags_orderby = 'count';
 					$tags_order = 'DESC';
 					$tit = get_the_title();
-					$all_tags_out = '<li class="all-tags"><a href="'.esc_url( remove_query_arg(array('page','paged','tag'),$perma) ).'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
+					$all_tags_out = '<li class="all-tags"><a href="'.$perma.'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
 				}
 				if ( $paged >= 2 || $page >= 2 )
 					$tit .= '. ' . sprintf( __( 'Page %s', 'vb' ), max( $paged, $page ) );
@@ -200,7 +201,6 @@ wp_head(); ?>
 			        	'order' => $tags_order,
 			        	'number' => $tags_count
 				)); 
-				$perma = get_permalink();
 				echo '<h1 class="vb-parts-desc">'.$tit.'</h1>';
 
 				if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
