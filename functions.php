@@ -26,6 +26,8 @@ function vb_theme_setup() {
 		'secondary' => esc_html__( 'Secondary', 'vb' ),
 	) );
 
+	// load language files
+	load_theme_textdomain('vb', get_template_directory(). '/lang');
 }
 
 /**
@@ -228,7 +230,6 @@ function vb_metabox_link_save( $post_id ) {
 }
 add_action( 'save_post', 'vb_metabox_link_save' );
 
-
 // related posts
 /**
  * Shows related posts by tag if available and category if not
@@ -341,77 +342,11 @@ function vb_add_custom_post_types_to_query( $query ) {
 	return $query;
 }
 
-/* Meta Box plugin CF registration */
-add_filter( 'rwmb_meta_boxes', 'vb_register_meta_boxes' );
-/**
-* Register meta boxes
-*
-* Remember to change "your_prefix" to actual prefix in your project
-*
-* @param array $meta_boxes List of meta boxes
-*
-* @return array
-*/
-function vb_get_cf() {
-	global $wpdb;
-	
-	$table_pm = $wpdb->prefix . "postmeta";
-	$sql_query = "
-		SELECT
-		  pm.meta_value
-		FROM $table_pm pm
-		WHERE pm.meta_key = '_vb_year'
-		ORDER BY pm.meta_value
-	";
-	$query_results = $wpdb->get_results( $sql_query , OBJECT_K );
-	$options = array();
-	foreach ( $query_results as $r ) {
-		$options[$r->meta_value] = $r->meta_value;
-	}
-	return $options;
+// add custom post types to main feed
+add_filter('request', 'prefix_feed_request');
+function prefix_feed_request($qv) {
+	if (isset($qv['feed']) && !isset($qv['post_type']))
+		$qv['post_type'] = array('post', 'link');
+	return $qv;
 }
-
-function vb_register_meta_boxes( $meta_boxes ) {
-	/**
-	* prefix of meta keys (optional)
-	* Use underscore (_) at the beginning to make keys hidden
-	* Alt.: You also can make prefix empty to disable it
-	*/
-	// Better has an underscore as last sign
-	$prefix = '_vb_';
-
-	// 1st meta box
-	$meta_boxes[] = array(
-		// Meta box id, UNIQUE per meta box. Optional since 4.1.5
-		'id' => 'testing',
-		'title' => 'Testing box', // Meta box title - Will appear at the drag and drop handle bar. Required.	
-		'post_types' => array( 'link' ), // Post types, accept custom post types as well - DEFAULT is 'post'. Can be array (multiple post types) or string (1 post type). Optional.
-		'context' => 'side', // Where the meta box appear: normal (default), advanced, side. Optional.	
-		'priority' => 'high',// Order of meta box: high (default), low. Optional.
-		// Auto save: true, false (default). Optional.
-		'autosave' => true,
-		// List of meta fields
-		'fields' => array(
-//			array(
-//				'name' => 'URL',
-//				'id' => "{$prefix}testing_url",
-//				'desc' => __( 'Text description', 'meta-box' ),
-//				'type' => 'text',	
-//				'std' => __( 'Default text value', 'meta-box' ),// Default value (optional)
-//				'clone' => true,	// CLONES: Add to make the field cloneable (i.e. have multiple value)
-	//			),
-			// CHECKBOX LIST
-			array(
-				'name' => 'Years',
-				'id' => "{$prefix}year",
-				'type' => 'checkbox_list',
-				// Options of checkboxes, in format 'value' => 'Label'
-				'options' => vb_get_cf()
-			),
-
-		)
-	);
-	return $meta_boxes;
-}
-
 ?>
