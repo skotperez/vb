@@ -1,0 +1,110 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: vb 0.1\n"
+"POT-Creation-Date: 2018-05-21 00:32+0200\n"
+"PO-Revision-Date: 2018-05-21 00:32+0200\n"
+"Last-Translator: Alfonso Sánchez Uzábal <skotperez@voragine.net>\n"
+"Language-Team: Montera34\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: lang\n"
+"X-Poedit-SearchPathExcluded-1: .git\n"
+"X-Poedit-SearchPathExcluded-2: images\n"
+
+#: functions.php:305
+msgid "Links"
+msgstr ""
+
+#: functions.php:306
+msgid "Link"
+msgstr ""
+
+#: functions.php:307
+msgid "Añadir un link"
+msgstr ""
+
+#: functions.php:308
+msgid "Editar"
+msgstr ""
+
+#: functions.php:309
+msgid "Editar este link"
+msgstr ""
+
+#: functions.php:310
+msgid "Nuevo link"
+msgstr ""
+
+#: functions.php:311
+msgid "Ver link"
+msgstr ""
+
+#: functions.php:312
+msgid "Ver este link"
+msgstr ""
+
+#: functions.php:313
+msgid "Buscar links"
+msgstr ""
+
+#: functions.php:314
+msgid "No se ha encontrado ningún link"
+msgstr ""
+
+#: functions.php:315
+msgid "Ningún link en la papelera"
+msgstr ""
+
+#: functions.php:316
+msgid "Superior"
+msgstr ""
+
+#: header.php:28 header.php:193
+#, php-format
+msgid "Page %s"
+msgstr "Página %s"
+
+#: header.php:168
+msgid "Linkoteca. Contexts"
+msgstr "Linkoteca. Contextos"
+
+#: header.php:177 header.php:184 header.php:190
+msgid "All tags"
+msgstr "Todos los tags"
+
+#: header.php:183
+#, php-format
+msgid "Linkoteca. Search results under \"\"%s\""
+msgstr "Linkoteca. Resultados de la búsqueda \"%s\""
+
+#: header.php:216
+msgid "Linkoteca. Navigation archive"
+msgstr "Linkoteca. Archivo de navegación"
+
+#: navigation.php:23
+msgid "«"
+msgstr ""
+
+#: navigation.php:24
+msgid "»"
+msgstr ""
+
+#: page.link.php:28
+#, php-format
+msgid "No links under context %s"
+msgstr "No hay enlaces en el contexto %s"
+
+#: page.link.php:28
+msgid "There is still no links."
+msgstr "Aún no hay enlaces."
+
+#~ msgid "Linkoteca. Context: %s"
+#~ msgstr "Linkoteca. Contexto: %s"
