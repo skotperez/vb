@@ -25,7 +25,7 @@
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
+		echo ' | ' . sprintf( __( 'Page %s', 'vb' ), max( $paged, $page ) );
 
 	?>
 </title>
@@ -172,21 +172,26 @@ wp_head(); ?>
 					$tags_orderby = 'count';
 					$tags_order = 'DESC';
 					$tag = sanitize_text_field($_GET['tag']);
-					$tit = sprintf(__('Linkoteca. Context %s','vb'), $tag );
-					$all_tags_out = '<li class="all-tags"><a href="'.$perma.'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
+					$tag_data = get_term_by('slug',$tag,'post_tag');
+					$tit = 'Linkoteca. '.$tag_data->name;
+					$all_tags_out = '<li class="all-tags"><a href="'.esc_url( remove_query_arg(array('page','paged','tag'),$perma) ).'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
 				} elseif ( is_search() ) {
+					$query_s = $wp_query->query_vars['s'];
 					$tags_count = '50';
 					$tags_orderby = 'count';
 					$tags_order = 'DESC';
-					$tit = __('Linkoteca. Navigation archive','vb');
-					$all_tags_out = '<li class="all-tags"><a href="'.$perma.'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
+					$tit = strintf(__('Linkoteca. Search results under ""%s"','vb'), $query_s);
+					$all_tags_out = '<li class="all-tags"><a href="'.esc_url( remove_query_arg(array('page','paged','tag'),$perma) ).'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
 				} else {
 					$tags_count = '50';
 					$tags_orderby = 'count';
 					$tags_order = 'DESC';
 					$tit = get_the_title();
-					$all_tags_out = '<li class="all-tags"><a href="'.$perma.'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
+					$all_tags_out = '<li class="all-tags"><a href="'.esc_url( remove_query_arg(array('page','paged','tag'),$perma) ).'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
 				}
+				if ( $paged >= 2 || $page >= 2 )
+					$tit .= '. ' . sprintf( __( 'Page %s', 'vb' ), max( $paged, $page ) );
+
 
 				$terms = get_terms( array(
 					'taxonomy' => 'post_tag',
@@ -203,7 +208,7 @@ wp_head(); ?>
 					echo $all_tags_out;
 					foreach ( $terms as $t ) {
 						$t_link = '?tag='.$t->slug;
-						echo '<li><a href='.$t_link.'>'.$t->name.'</a></li>';
+						echo '<li><a href=/linkoteca'.$t_link.'>'.$t->name.'</a></li>';
 					}
 					echo '</ul>';
 				}

@@ -281,7 +281,7 @@ body {
 	margin: 0 5px 15px 0;
 }
 .tag-list li a:link {
-	font: 100 1.2em/1em 'Libre Franklin',sans-serif;
+	font: 100 1em/1em 'Libre Franklin',sans-serif;
 	text-transform: uppercase;
 	padding: 3px;
 	border: 1px solid #000;

@@ -4,8 +4,11 @@ $post_type = get_post_type();
 $post_format = get_post_format();
 $post_perma = get_permalink();
 $post_tit = get_the_title();
-if ( $post_format != '' || $post_type == 'link' ) { $post_date_human = get_the_time('d\/m\/Y'); }
-else { $post_date_human = get_the_time('d \d\e F \d\e Y'); }
+if ( $post_format != '' || $post_type == 'link' ) {
+	$post_date_human = get_the_time('d\/m\/Y');
+} else {
+	$post_date_human = get_the_time('d \d\e F \d\e Y');
+}
 
 $post_date = get_the_time('Y-m-d');
 $u_time = get_the_time('U');
@@ -13,7 +16,9 @@ $u_modified_time = get_the_modified_time('U');
 
 if ( has_post_thumbnail() ) {
 	$loop_image = '<figure class="art-img">'.get_the_post_thumbnail($post->ID,'large').'</figure>';
-} else { $loop_image = ""; }
+} else {
+	$loop_image = "";
+}
 
 
 ?>
@@ -65,10 +70,10 @@ if ( has_post_thumbnail() ) {
 			</div>
 			<?php echo $loop_image; ?>
 			<?php echo $link_quote_out; ?>
-					<?php if ( is_single() ) { ?><div class="art-link"><a class="link-linkout" href="<?php echo $link_url ?>"><i class="fas fa-external-link-square-alt fa-lg"></i> Visitar contenido original</a></div><?php } ?>
+			<?php if ( is_single() ) { ?><div class="art-link"><a class="link-linkout" href="<?php echo $link_url ?>"><i class="fas fa-external-link-square-alt fa-lg"></i> Visitar contenido original</a></div><?php } ?>
 		</section>
-	<?php }
-	else { // if is not link post type ?>
+
+	<?php } else { // if is not link post type ?>
 
 	<header>
 	<?php //if ( $post_format == 'link' ) { } else {
@@ -240,7 +245,7 @@ $art_text_class = "art-text";
 				</ul><!-- end .linelist -->
 			</div><!-- end .art-share -->
 			
-	<?php	} // end if single post ?>
+		<?php } // end if single post ?>
 	</div><!-- end .art-meta -->
 	</section>
 
@@ -261,4 +266,4 @@ $art_text_class = "art-text";
 </article>
 </div><!-- end class hentry -->
 
-		<?php	//comments_popup_link('0&nbsp;comentarios', '1&nbsp;comentario', '%&nbsp;comentarios'); ?>
+<?php	//comments_popup_link('0&nbsp;comentarios', '1&nbsp;comentario', '%&nbsp;comentarios'); ?>

@@ -29,7 +29,7 @@ $url_raw = "http://" .$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 $url_raw = preg_replace('/\/page\/[0-9]*/','',$url_raw);
 $pt_current = sanitize_text_field( $_GET['post_type'] );
 if( $wp_rewrite->using_permalinks() )
-	$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg(array('s','post_type'),$url_raw ) ) . "page/%#%/", 'paged');
+	$pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg(array('s','post_type','tag'),$url_raw ) ) . "page/%#%/", 'paged');
 
 if( !empty($wp_query->query_vars['s']) )
 	$pagination['add_args'] = array('s'=>get_query_var('s'));

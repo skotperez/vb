@@ -5,16 +5,14 @@ include("general-vars.php"); ?>
 
 <?php
 $tags = ( array_key_exists('tags',$_GET) ) ? sanitize_text_field($_GET['tags']) : '';
-$tag = ( array_key_exists('tag',$_GET) ) ? sanitize_text_field($_GET['tag']) : '';
-$args = array(
-	'tag' => $tag,
-	'post_type' => 'link',
-);
-if ( $paged > 1 ) {
-  $args['paged'] = $paged;
-}
+if ( $tags == '' ) { // if is not tag mosaic
+	
+	$tag = ( array_key_exists('tag',$_GET) ) ? sanitize_text_field($_GET['tag']) : '';
+	if ( $paged > 1 )
+		$args['paged'] = $paged;
+	$args['tag'] = ( $tag != '' ) ? $tag : false;
+	$args['post_type'] = 'link';
 
-if ( $tags == '' ) {
 	echo '<section>';
 	// The Query
 	$the_query = new WP_Query( $args );
@@ -28,6 +26,7 @@ if ( $tags == '' ) {
 
 	} else {
 		$no_links_message = ( $tag != '' ) ? sprintf(__('No links under context %s','vb'),$tag) : __('There is still no links.','vb');
+		echo $no_links_message;
 	}
 	echo '</section>';
 }

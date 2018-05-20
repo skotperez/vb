@@ -24,6 +24,12 @@ a:hover,
 	color: <?php echo "#$hover_color" ?>;
 }
 
+.category #parts .blog,
+.category #parts .blog a,
+.single-post #parts .blog,
+.single-post #parts .blog a,
+.page-template-page-link #parts .linkoteca,
+.page-template-page-link #parts .linkoteca a,
 .single-link #parts .linkoteca,
 .single-link #parts .linkoteca a,
 .vb-parts .current-menu-item,
