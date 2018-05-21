@@ -53,13 +53,29 @@ function vb_load_scripts() {
 	wp_enqueue_script(
 		'fa-js',
 		get_template_directory_uri() . '/js/fontawesome-all.min.js',NULL,NULL,true
-
 	);
 
+	if ( is_page_template('page.link.php') ) {
+		wp_enqueue_script(
+			'list-js',
+			get_template_directory_uri() . '/js/list.min.js',NULL,NULL,true
+		);
+	}
 } // end load js scripts in the site
 
+function vb_extra_scripts() {
+	if ( is_page_template('page.link.php') ) {
+		echo "<script type='text/javascript'>
+			var options = {
+				valueNames: [ 'name' ]
+			};
+			var tagList = new List('tag-list', options);</script>";
+	}
+} // end load js scripts in the site
+add_action('wp_footer','vb_extra_scripts',999);
+
 // load js scripts in admin panel
-function vb_load_admin_cripts() {
+function vb_load_admin_scripts() {
 	wp_enqueue_script(
 		'clone-metabox-js',
 		get_template_directory_uri() . '/js/clone.metabox.js',

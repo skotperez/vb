@@ -204,17 +204,22 @@ wp_head(); ?>
 				echo '<h1 class="vb-parts-desc">'.$tit.'</h1>';
 
 				if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-					echo '<ul class="tag-list">';
+					echo '<div id="tag-list" class="simple-input">
+						<label for="tag-filter"><i class="fa fa-filter"></i> '.__('Filter tags','vb').'</label>
+						<input name="tag-filter" type="text" class="search" />
+						<ul class="tag-list list">';
 					echo $all_tags_out;
 					foreach ( $terms as $t ) {
 						$t_link = '?tag='.$t->slug;
-						echo '<li><a href=/linkoteca'.$t_link.'>'.$t->name.'</a></li>';
+						echo '<li><a class="name" href=/linkoteca'.$t_link.'>'.$t->name.'</a></li>';
 					}
-					echo '</ul>';
+					echo '</ul></div>';
 				}
-			} elseif ( is_singular('link') ) {
+			}
+			elseif ( is_singular('link') ) {
 				echo '<h2 class="vb-parts-desc">'.__('Linkoteca. Navigation archive','vb').'</h1>';
-			} else {
+			}
+			else {
 				$location = "secondary";
 				if ( has_nav_menu( $location ) ) {
 					$args = array(
@@ -229,9 +234,11 @@ wp_head(); ?>
 			}
 			?>
 
-			<div id="busca">
-				<?php include "searchform.php"; ?>
-			</div>
+			<?php if ( !array_key_exists('tags',$_GET) ) { ?>
+				<div id="busca">
+					<?php include "searchform.php"; ?>
+				</div>
+			<?php } ?>
 		</header>
 
 	</div><!-- end id pre -->

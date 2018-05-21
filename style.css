@@ -355,6 +355,7 @@ body {
 	padding: 5px 0;
 }
 
+/* FORMS */
 #busca {
 	margin-top: 2px;
 }
@@ -396,6 +397,26 @@ body {
 	position: relative;
 	top: -34px;
 	left: 160px;
+}
+.simple-input {
+	margin-top: 1em;
+}
+.simple-input label {
+	display: inline-block;
+	padding: 2px 5px;
+	margin-bottom: 5px;
+	font: 300 1em/1.4em 'Libre Franklin',sans-serif;
+	text-transform: uppercase;
+}
+
+.simple-input input[type="text"] {
+	border: 1px solid transparent;
+	border-bottom: 1px solid #000;
+	height: 18px;
+	font: 100 1em/1.4em 'Libre Franklin',Helvetica,Arial,sans-serif;
+	background: #fff;
+	position: relative;
+	width: 150px;
 }
 
 /* navigation bar */

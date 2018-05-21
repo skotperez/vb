@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: vb 0.1\n"
-"POT-Creation-Date: 2018-05-21 00:32+0200\n"
-"PO-Revision-Date: 2018-05-21 00:32+0200\n"
+"POT-Creation-Date: 2018-05-21 02:13+0200\n"
+"PO-Revision-Date: 2018-05-21 02:13+0200\n"
 "Last-Translator: Alfonso Sánchez Uzábal <skotperez@voragine.net>\n"
 "Language-Team: Montera34\n"
 "Language: es_ES\n"
@@ -19,73 +19,77 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: .git\n"
 "X-Poedit-SearchPathExcluded-2: images\n"
 
-#: functions.php:305
+#: functions.php:321
 msgid "Links"
 msgstr ""
 
-#: functions.php:306
+#: functions.php:322
 msgid "Link"
 msgstr ""
 
-#: functions.php:307
+#: functions.php:323
 msgid "Añadir un link"
 msgstr ""
 
-#: functions.php:308
+#: functions.php:324
 msgid "Editar"
 msgstr ""
 
-#: functions.php:309
+#: functions.php:325
 msgid "Editar este link"
 msgstr ""
 
-#: functions.php:310
+#: functions.php:326
 msgid "Nuevo link"
 msgstr ""
 
-#: functions.php:311
+#: functions.php:327
 msgid "Ver link"
 msgstr ""
 
-#: functions.php:312
+#: functions.php:328
 msgid "Ver este link"
 msgstr ""
 
-#: functions.php:313
+#: functions.php:329
 msgid "Buscar links"
 msgstr ""
 
-#: functions.php:314
+#: functions.php:330
 msgid "No se ha encontrado ningún link"
 msgstr ""
 
-#: functions.php:315
+#: functions.php:331
 msgid "Ningún link en la papelera"
 msgstr ""
 
-#: functions.php:316
+#: functions.php:332
 msgid "Superior"
 msgstr ""
 
-#: header.php:28 header.php:193
+#: header.php:28 header.php:194
 #, php-format
 msgid "Page %s"
 msgstr "Página %s"
 
-#: header.php:168
+#: header.php:169
 msgid "Linkoteca. Contexts"
 msgstr "Linkoteca. Contextos"
 
-#: header.php:177 header.php:184 header.php:190
+#: header.php:178 header.php:185 header.php:191
 msgid "All tags"
 msgstr "Todos los tags"
 
-#: header.php:183
+#: header.php:184
 #, php-format
 msgid "Linkoteca. Search results under \"\"%s\""
 msgstr "Linkoteca. Resultados de la búsqueda \"%s\""
 
-#: header.php:216
+#: header.php:208 header.php:209
+msgid "Filter tags"
+msgstr "Filtrar tags"
+
+#: header.php:220
 msgid "Linkoteca. Navigation archive"
 msgstr "Linkoteca. Archivo de navegación"
 
