@@ -14,11 +14,6 @@ function vb_theme_setup() {
 
 	/* Load JavaScript files on the 'wp_enqueue_scripts' action hook. */
 	add_action( 'wp_enqueue_scripts', 'vb_load_scripts' );
-	/* Load JavaScript files on admin panel. */
-//	add_action( 'admin_enqueue_scripts', 'vb_load_admin_scripts' );
-
-	// custom post type
-	add_action( 'init', 'vb_create_post_type', 0 );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -73,18 +68,6 @@ function vb_extra_scripts() {
 	}
 } // end load js scripts in the site
 add_action('wp_footer','vb_extra_scripts',999);
-
-// load js scripts in admin panel
-function vb_load_admin_scripts() {
-	wp_enqueue_script(
-		'clone-metabox-js',
-		get_template_directory_uri() . '/js/clone.metabox.js',
-		array( 'jquery' ),
-		'0.1',
-		FALSE
-	);
-
-} // end load js scripts in admin panel
 
 // Twenty Eleven theme comments function with some modifications
 if ( ! function_exists( 'vb_comment' ) ) :
@@ -160,92 +143,6 @@ elseif ( $counter == 1 ) { echo "Un comentario"; }
 else { echo "$counter comentarios"; }
 }
 
-// custom meta box in link CPT
-function vb_metabox_link() {
-	add_meta_box(
-		'_vb_metabox_link_url', // ID
-		'URL and quotes', // title
-		'vb_metabox_link_render', // callback function
-		'link', // post type
-		'normal', // context: normal, side, advanced
-		'high' // priority: high, core, default, low
-	);
-
-}
-add_action( 'add_meta_boxes', 'vb_metabox_link', 10, 2 );
-
-/**
- * Prints the box content.
- * 
- * @param WP_Post $post The object for the current post/page.
- */
-function vb_metabox_link_render( $post ) {
-
-	// Add an nonce field so we can check for it later.
-	wp_nonce_field( 'vb_metabox_link_render', 'vb_metabox_link_render_nonce' );
-
-	$url = get_post_meta( $post->ID, '_vb_metabox_link_url', true );
-	$quote = get_post_meta( $post->ID, '_vb_metabox_link_quote', true );
-
-	echo '<label for="_vb_metabox_link_url">Link URL</label> ';
-	echo '<input type="text" id="_vb_metabox_link_url" name="_vb_metabox_link_url" value="' . esc_attr( $url ) . '" />';
-	$settings = array(
-		'wpautop' => true,
-		'media_buttons' => true,
-		'textarea_rows' => 10,
-	);
-	wp_editor($quote,'_vb_metabox_link_quote',$settings);
-
-}
-
-/**
- * When the post is saved, saves our custom data.
- *
- * @param int $post_id The ID of the post being saved.
- */
-function vb_metabox_link_save( $post_id ) {
-
-	/*
-	* We need to verify this came from the our screen and with proper authorization,
-	* because save_post can be triggered at other times.
-	*/
-
-	// Check if our nonce is set.
-	if ( ! isset( $_POST['vb_metabox_link_render_nonce'] ) )
-		return $post_id;
-
-	$nonce = $_POST['vb_metabox_link_render_nonce'];
-
-	// Verify that the nonce is valid.
-	if ( ! wp_verify_nonce( $nonce, 'vb_metabox_link_render' ) )
-		return $post_id;
-
-	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
-		return $post_id;
-
-	// Check the user's permissions.
-	if ( 'page' == $_POST['post_type'] ) {
-		if ( ! current_user_can( 'edit_page', $post_id ) )
-			return $post_id;
-
-	} else {
-		if ( ! current_user_can( 'edit_post', $post_id ) )
-			return $post_id;
-	}
-
-	/* OK, its safe for us to save the data now. */
-	// Sanitize user input.
-	$url = sanitize_text_field( $_POST['_vb_metabox_link_url'] );
-	$quote = $_POST['_vb_metabox_link_quote'];
-
-	// Update the meta field in the database.
-	update_post_meta( $post_id, '_vb_metabox_link_url', $url );
-	update_post_meta( $post_id, '_vb_metabox_link_quote', $quote );
-
-}
-add_action( 'save_post', 'vb_metabox_link_save' );
-
 // related posts
 /**
  * Shows related posts by tag if available and category if not
@@ -313,40 +210,6 @@ function vb_related_posts($title = 'Contenido relacionado', $count = 5) {
 	', $title, $post_list );
 } // end related posts function
 
-// custom post types
-function vb_create_post_type() {
-	// Proyectos custom post type
-	register_post_type( 'link', array(
-		'labels' => array(
-			'name' => __( 'Links' ),
-			'singular_name' => __( 'Link' ),
-			'add_new_item' => __( 'Añadir un link' ),
-			'edit' => __( 'Editar' ),
-			'edit_item' => __( 'Editar este link' ),
-			'new_item' => __( 'Nuevo link' ),
-			'view' => __( 'Ver link' ),
-			'view_item' => __( 'Ver este link' ),
-			'search_items' => __( 'Buscar links' ),
-			'not_found' => __( 'No se ha encontrado ningún link' ),
-			'not_found_in_trash' => __( 'Ningún link en la papelera' ),
-			'parent' => __( 'Superior' )
-		),
-		'taxonomies' => array('post_tag'),
-		'has_archive' => true,
-		'public' => true,
-		'publicly_queryable' => true,
-		'exclude_from_search' => false,
-		'menu_position' => 5,
-		'menu_icon' => 'dashicons-admin-links',
-		'hierarchical' => false, // if true this post type will be as pages
-		'query_var' => true,
-		'supports' => array('title','author','trackbacks','comments','thumbnail' ),
-		'rewrite' => array('slug'=>'link','with_front'=>false),
-		'can_export' => true,
-		'_builtin' => false,
-		'_edit_link' => 'post.php?post=%d',
-	));
-}
 
 // Show posts of 'post', 'link' post types on single pages
 add_action( 'pre_get_posts', 'vb_add_custom_post_types_to_query' );

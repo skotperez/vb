@@ -181,7 +181,7 @@ wp_head(); ?>
 					$tags_count = '50';
 					$tags_orderby = 'count';
 					$tags_order = 'DESC';
-					$tit = strintf(__('Linkoteca. Search results under ""%s"','vb'), $query_s);
+					$tit = sprintf(__('Linkoteca. Search results under ""%s"','vb'), $query_s);
 					$all_tags_out = '<li class="all-tags"><a href="'.$perma.'?tags=0"><i class="fa fa-hashtag"></i> '.__('All tags','vb').'</a></li>';
 				} else {
 					$tags_count = '50';
