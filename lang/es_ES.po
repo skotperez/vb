@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: vb 0.1\n"
-"POT-Creation-Date: 2018-05-21 02:13+0200\n"
-"PO-Revision-Date: 2018-05-21 02:13+0200\n"
+"POT-Creation-Date: 2018-05-31 00:49+0200\n"
+"PO-Revision-Date: 2018-05-31 00:50+0200\n"
 "Last-Translator: Alfonso Sánchez Uzábal <skotperez@voragine.net>\n"
 "Language-Team: Montera34\n"
 "Language: es_ES\n"
@@ -18,54 +18,6 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: lang\n"
 "X-Poedit-SearchPathExcluded-1: .git\n"
 "X-Poedit-SearchPathExcluded-2: images\n"
-
-#: functions.php:321
-msgid "Links"
-msgstr ""
-
-#: functions.php:322
-msgid "Link"
-msgstr ""
-
-#: functions.php:323
-msgid "Añadir un link"
-msgstr ""
-
-#: functions.php:324
-msgid "Editar"
-msgstr ""
-
-#: functions.php:325
-msgid "Editar este link"
-msgstr ""
-
-#: functions.php:326
-msgid "Nuevo link"
-msgstr ""
-
-#: functions.php:327
-msgid "Ver link"
-msgstr ""
-
-#: functions.php:328
-msgid "Ver este link"
-msgstr ""
-
-#: functions.php:329
-msgid "Buscar links"
-msgstr ""
-
-#: functions.php:330
-msgid "No se ha encontrado ningún link"
-msgstr ""
-
-#: functions.php:331
-msgid "Ningún link en la papelera"
-msgstr ""
-
-#: functions.php:332
-msgid "Superior"
-msgstr ""
 
 #: header.php:28 header.php:194
 #, php-format
@@ -85,13 +37,49 @@ msgstr "Todos los tags"
 msgid "Linkoteca. Search results under \"\"%s\""
 msgstr "Linkoteca. Resultados de la búsqueda \"%s\""
 
-#: header.php:208 header.php:209
+#: header.php:208
 msgid "Filter tags"
 msgstr "Filtrar tags"
 
 #: header.php:220
 msgid "Linkoteca. Navigation archive"
 msgstr "Linkoteca. Archivo de navegación"
+
+#: inc-share.php:2
+msgid "Share"
+msgstr "Compartir"
+
+#: loop.php:35
+msgid "Local copy of the original audio file"
+msgstr "Copia local del archivo de audio original"
+
+#: loop.php:36
+msgid "Local copy of the original image file"
+msgstr "Copia local de la imagen original"
+
+#: loop.php:37
+msgid "Local copy of the original PDF file"
+msgstr "Copia local del PDF original"
+
+#: loop.php:38
+msgid "Local copy of the original text file"
+msgstr "Copia local del archivo de texto original"
+
+#: loop.php:39
+msgid "Local copy of the original video file"
+msgstr "Copia local del vídeo original"
+
+#: loop.php:46
+msgid "Download"
+msgstr "Descargar"
+
+#: loop.php:93
+msgid "Source"
+msgstr "Fuente"
+
+#: loop.php:93
+msgid "Go to original content"
+msgstr "Ir al contenido original"
 
 #: navigation.php:23
 msgid "«"

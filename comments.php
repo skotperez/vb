@@ -3,6 +3,7 @@ if ( isset($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['
 	die ('Please do not load this page directly. Thanks!<br />Por favor, no intentes acceder a esta p&aacute;gina directamente. Gracias.');
 ?>
 
+<?php if ( comments_open() || have_comments() ) { ?>
 <div id="comments">
 
 	<?php if ( post_password_required() ) :
@@ -106,7 +107,9 @@ if ( isset($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['
 
 
 </div><!-- end id comments -->
+<?php } ?>
 
+<?php if ( pings_open() ) { ?>
 <div id="pingbacks">
 	<h2 class="pings-tit"><?php trackback_count(); ?></h2>
 	<ul class="pings-list">
@@ -122,3 +125,4 @@ if ( isset($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['
 	?>
 	</ul>
 </div><!-- end id pingbacks -->
+<?php } ?>

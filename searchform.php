@@ -7,6 +7,7 @@ if ( is_page_template('page.link.php') || is_singular('link') ) {
 	$post_type = "post";
 	$textencaja = "Buscar entradas";
 }
+$formclass = "";
 if ( !empty($query_s) ) {
 	$formclass = " class='current-s'";
 	$textencaja = "Buscar otra vez";

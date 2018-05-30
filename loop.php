@@ -25,10 +25,27 @@ if ( has_post_thumbnail() ) {
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope="" itemtype="http://schema.org/BlogPosting">
 <article>
 
-	<?php if ( $post_type == 'link' ) {
+	<?php if ( $post_type == 'link' ) { // if this is link post type
 		$link_url = get_post_meta( $post->ID, '_vb_metabox_link_url', true );
 		$link_quote = get_post_meta( $post->ID, '_vb_metabox_link_quote', true );
 		$link_quote_out = ( $link_quote != '' ) ? '<div class="art-quote"><div class="alignleft"><i class="fas fa-quote-left"></i></div>'.apply_filters('the_content',$link_quote).'</div>' : '';
+		$link_file = get_post_meta( $post->ID, '_vb_metabox_link_file', true );
+		if ( $link_file != '' ) {
+			$f_mime = $link_file['post_mime_type'];
+			if (strpos($f_mime, 'audio') !== false) { $f_mime_i = 'file-audio'; $f_label = __('Local copy of the original audio file','vb'); }
+			elseif (strpos($f_mime, 'image') !== false) { $f_mime_i = 'file-image'; $f_label = __('Local copy of the original image file','vb'); }
+			elseif (strpos($f_mime, 'pdf') !== false) { $f_mime_i = 'file-pdf'; $f_label = __('Local copy of the original PDF file','vb'); }
+			elseif (strpos($f_mime, 'text') !== false) { $f_mime_i = 'file-alt'; $f_label = __('Local copy of the original text file','vb'); }
+			elseif (strpos($f_mime, 'video') !== false) { $f_mime_i = 'file-video'; $f_label = __('Local copy of the original video file','vb'); }
+			else { $f_mime_i = 'file-archive'; $f_label = ''; }
+			$f_url = $link_file['guid'];
+			$f_bytes = filesize( get_attached_file( $link_file['ID'] ) );
+			$s = array('b', 'Kb', 'Mb', 'Gb');
+			$e = floor(log($f_bytes)/log(1024));
+			$f_size = sprintf('%.2f '.$s[$e], ($f_bytes/pow(1024, floor($e))));
+			$link_file_out = '<div class="art-file"><div><strong class="art-meta-tit">'.__('Download','vb').'</strong></div><div><a href="'.$f_url.'"><i class="fas fa-'.$f_mime_i.' fa-lg"></i> '.$f_label.'</a> ('.$f_mime.', '.$f_size.')</div></div>';
+		}
+		else { $link_file_out = ''; }
 
 		$h = ( is_single() ) ? "1" : "2";
 		if ( is_single() ) { ?>
@@ -70,10 +87,22 @@ if ( has_post_thumbnail() ) {
 			</div>
 			<?php echo $loop_image; ?>
 			<?php echo $link_quote_out; ?>
-			<?php if ( is_single() ) { ?><div class="art-link"><a class="link-linkout" href="<?php echo $link_url ?>"><i class="fas fa-external-link-square-alt fa-lg"></i> Visitar contenido original</a></div><?php } ?>
+			<?php if ( is_single() ) { ?>
+				<div class="art-meta">
+					<div class="art-linkout">
+						<div><strong class="art-meta-tit"><?php _e('Source','vb'); ?></strong></div><div><a href="<?php echo $link_url ?>"><i class="fas fa-external-link-square-alt fa-lg"></i> <?php _e('Go to original content','vb'); ?></a></div>
+					</div>
+					<?php echo $link_file_out;
+	
+					// display share button
+					include "inc-share.php"; ?>
+
+				</div>
+			<?php } ?>
 		</section>
 
-	<?php } else { // if is not link post type ?>
+	<?php }
+	else { // if is not link post type ?>
 
 	<header>
 	<?php //if ( $post_format == 'link' ) { } else {
@@ -203,7 +232,7 @@ $art_text_class = "art-text";
 		</div><!-- end class art-context -->
 		<?php // end contexto: categories and tags	
 
-		if ( is_single() || is_page() ) {
+		if ( is_single() ) {
 			// author info
 			$aut_nickname = get_the_author_meta('nickname');
 			$aut_completename = get_the_author_meta('first_name'). " " .get_the_author_meta('last_name');
@@ -227,25 +256,10 @@ $art_text_class = "art-text";
 			";
 			// end related posts
 
-			// display twitter share button ?>
-			<div class="art-share">
-				<div><strong class="art-meta-tit">Compartir</strong></div>
-				<ul class='linelist'>
-					<?php // vars to share
-					$post_perma_enc = urlencode($post_perma);
-					$post_tit_enc = urlencode($post_tit);
-					//$tw_share_url = "https://twitter.com/intent/tweet?original_referer=" .$post_perma_enc. "&text=" .$post_tit_enc. "&tw_p=tweetbutton&url=" .$post_perma_enc. "&via=" .$tw_user;
-					$tw_share_url = "http://twitter.com/home?status=" .$post_tit_enc. " " .$post_perma_enc. " v/ @skotperez";
-					$fb_share_url = "http://facebook.com/sharer.php?u=" .$post_perma_enc;
-					$gplus_share_url = "https://plus.google.com/share?url=" .$post_perma_enc;
-					?>
-					<li><a href="<?php echo $tw_share_url?>" title="Compartir en Twitter" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></li>
-					<li><a href="<?php echo $fb_share_url ?>" title="Compartir en Facebook" target="_blank"><i class="fab fa-facebook fa-2x"></i></a></li>
-					<li><a href="<?php echo $gplus_share_url ?>" title="Compartir en Google Plus" target="_blank"><i class="fab fa-google-plus fa-2x"></i></a></li>
-				</ul><!-- end .linelist -->
-			</div><!-- end .art-share -->
+			// display share button
+			include "inc-share.php";
 			
-		<?php } // end if single post ?>
+		} // end if single post ?>
 	</div><!-- end .art-meta -->
 	</section>
 

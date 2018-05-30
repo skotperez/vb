@@ -556,9 +556,6 @@ h2.art-tit {
 	margin-right: 5px;
 	display: inline;
 }
-.link-linkout {
-	vertical-align: text-top;
-}
 .error-tit {
 	font: 100 7.8em/1.4em 'Libre Franklin',sans-serif;
 	text-transform: uppercase;
@@ -601,8 +598,8 @@ h2.art-tit {
 	position: relative;
 	margin-bottom: 10em;
 }
-.hentry.type-link {
-	margin-bottom: 3.2em !important;
+.uentry.type-link {
+	margin-bottom: 5em !important;
 }
 .hentry hr {
 	width: 50px;
@@ -610,12 +607,7 @@ h2.art-tit {
 	margin: 2em 0 1em;
 }
 .art-quote {
-	color: #aaa;
 	margin: 1em 0;
-}
-.link-linkout {
-	font: 100 1.2em/1em 'Libre Franklin';
-	text-transform: uppercase;
 }
 .art-text {
 	margin: 1em 0;
