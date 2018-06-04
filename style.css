@@ -83,7 +83,7 @@ em a {
 	font-style: italic;
 }
 pre,
-code {font-family: "courier new", monospace;}
+code {font-family: monospace; overflow: auto;}
 
 strong em,
 em strong {
