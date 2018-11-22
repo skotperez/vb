@@ -653,10 +653,11 @@ h2.art-tit {
 #epi .linelist {
 	margin-bottom: 1em;
 }
-#epi h2,
-#skotperez a {
+#epi h2 {
 	text-transform: uppercase;
 	text-decoration: none;
+	font-size: 1.2em;
+	margin-bottom: 1em;
 }
 #epi a:link,
 #epi a:visited {
