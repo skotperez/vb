@@ -1,5 +1,5 @@
 /*
-Theme Name: vb
+heme Name: vb
 Theme URI: http://montera34.com
 Description: Tema desarrollado para el blog voragine.net.
 Version: 0.1
@@ -147,6 +147,9 @@ ol.editedlist,
 	margin-bottom: 1em;
 	list-style: decimal inside;
 }
+.art-text dl {
+	margin-bottom: 1em;
+}
 .editedlist li,
 .art-related li,
 .art-text ul li,
@@ -165,6 +168,9 @@ ol.editedlist,
 	content: "+";
 	padding-right: 5px;
 	margin-left: -13px;
+}
+.art-text dl dt {
+	font-weight: bold;
 }
 .hide-text {
 	text-indent: 100%;
